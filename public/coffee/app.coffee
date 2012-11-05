@@ -1,2 +1,2 @@
-define [], ->
-    alert 'Hi'
+define ['boxbox'], (boxbox) ->
+    console.log boxbox
