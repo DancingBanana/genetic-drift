@@ -24,7 +24,7 @@ All of the winners and runners up will be showcased on our blog.
 
 ### Everyone's a winner!
 
-All particpants will receive a limited edition [Coderwall](http://www.coderwall.com) badge as shown above. Winners and runners up will also get their own special version of it.
+All participants will receive a limited edition [Coderwall](http://www.coderwall.com) badge as shown above. Winners and runners up will also get their own special version of it.
 
 ## Judging
 
@@ -39,7 +39,7 @@ We have a number of awesome judges who graciously volunteered to take a look at 
 ## Rules
 
 * To qualify for entry as an **individual** you must fork the [github/game-off-2012](https://github.com/github/game-off-2012) repository to your individual account
-* To quality for entry as a **team** you must fork the [github/game-off-2012](https://github.com/github/game-off-2012) to a [free organization account](https://github.com/settings/organizations)
+* To qualify for entry as a **team** you must fork the [github/game-off-2012](https://github.com/github/game-off-2012) to a [free organization account](https://github.com/settings/organizations)
 * All entries must be web-based i.e. playable in a browser. HTML5, WebGL, Unity, Torque 3D, Node JS, Flash is all possible - just be sure the source is made available on your fork.
 * You must be over the age of 13
 
