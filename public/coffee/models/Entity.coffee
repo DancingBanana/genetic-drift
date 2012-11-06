@@ -1,12 +1,14 @@
 define [], () ->
 
     class Entity
-        constructor: (@world, @overrides) ->
+        constructor: (@world, @overrides = {}) ->
+
+        entity: {}
 
         template: {}
 
         register: =>
-            @world.createEntity(@template, @overrides)
+            @entity = @world.createEntity(@template, @overrides)
             @
 
     return Entity
