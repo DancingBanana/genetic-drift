@@ -21,6 +21,7 @@ define ['cs!models/DynamicEntity', 'image!/img/character.png'], (DynamicEntity, 
         register: =>
             super
             @entity.onTick @onTick
+            @
 
         onTick: =>
             @frame++
