@@ -1,58 +1,17 @@
-define ['jquery', 'boxbox'], ($, boxbox) ->
+define ['jquery', 'boxbox', 'cs!models/GroundEntity'], ($, boxbox, GroundEntity) ->
     $canvas = $ '#gamescape'
     canvas = $canvas.get 0
     world = boxbox.createWorld canvas
 
-
-    groundTemplate =
-        name: 'ground'
-        type: 'static'
-        height: .2
-        color: 'green'
-        borderColor: 'rgba(0, 100, 0, .5)'
-        borderWidth: 3
-
-
-    world.createEntity groundTemplate,
-        width: 20
-        x: 10
-        y: 13.22
-
-    world.createEntity groundTemplate,
-        width: 6
-        x: 3
-        y: 5
-
-    world.createEntity groundTemplate,
-        width: 2
-        x: 9
-        y: 6.5
-
-    world.createEntity groundTemplate,
-        width: 2
-        x: 11
-        y: 8
-
-    world.createEntity groundTemplate,
-        width: 2
-        x: 13
-        y: 9.5
-
-    world.createEntity groundTemplate,
-        width: 2
-        x: 15
-        y: 11
-
-    world.createEntity groundTemplate,
-        width: 2
-        x: 13
-        y: 12.5
-
-    world.createEntity groundTemplate,
-        width: 8
-        x: 16
-        y: 5
-
+    grounds = (new GroundEntity world, options).register() for options in [
+        { width: 20, x: 10, y: 13.22 }
+        { width: 6, x: 3, y: 5 }
+        { width: 2, x: 9, y: 6.5 }
+        { width: 2, x: 11, y: 8 }
+        { width: 2, x: 13, y: 9.5 }
+        { width: 2, x: 15, y: 11 }
+        { width: 2, x: 13, y: 12.5 }
+        { width: 8, x: 16, y: 5 } ]
 
     player = world.createEntity
         name: 'player'
