@@ -1,4 +1,9 @@
-define ['jquery', 'boxbox', 'cs!models/GroundEntity'], ($, boxbox, GroundEntity) ->
+define [
+    'jquery'
+    'boxbox'
+    'cs!models/GroundEntity'
+    'cs!models/Character' ], ($, boxbox, GroundEntity, Character) ->
+
     $canvas = $ '#gamescape'
     canvas = $canvas.get 0
     world = boxbox.createWorld canvas, { collisionOutlines: true, scale:32, tickFrequency: 100 }
@@ -12,6 +17,8 @@ define ['jquery', 'boxbox', 'cs!models/GroundEntity'], ($, boxbox, GroundEntity)
         { width: 2, x: 15, y: 11 }
         { width: 2, x: 13, y: 12.5 }
         { width: 8, x: 16, y: 5 } ]
+
+    character = (new Character world, { x: 2, y: 10 } ).register()
 
     player = world.createEntity
         name: 'player'
