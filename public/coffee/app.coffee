@@ -1,7 +1,7 @@
 define ['jquery', 'boxbox', 'cs!models/GroundEntity'], ($, boxbox, GroundEntity) ->
     $canvas = $ '#gamescape'
     canvas = $canvas.get 0
-    world = boxbox.createWorld canvas
+    world = boxbox.createWorld canvas, { collisionOutlines: true, scale:32, tickFrequency: 100 }
 
     grounds = (new GroundEntity world, options).register() for options in [
         { width: 20, x: 10, y: 13.22 }
