@@ -1,4 +1,4 @@
-define ['jquery'], ($) ->
+define [], () ->
 
     class Entity
         constructor: (@world, @overrides) ->

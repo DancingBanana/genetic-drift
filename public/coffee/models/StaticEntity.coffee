@@ -1,4 +1,4 @@
-define ['jquery', 'cs!models/Entity'], ($, Entity) ->
+define ['cs!models/Entity'], (Entity) ->
 
     class StaticEntity extends Entity
         template:
