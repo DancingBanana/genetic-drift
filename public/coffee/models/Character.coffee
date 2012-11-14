@@ -18,11 +18,6 @@ define ['cs!models/DynamicEntity', 'image!/img/character.png'], (DynamicEntity, 
             spriteX: 0
             spriteY: 0
 
-        register: =>
-            super
-            @entity.onTick @onTick
-            @
-
         onTick: =>
             @frame++
             @frame = @frame % @frameMod

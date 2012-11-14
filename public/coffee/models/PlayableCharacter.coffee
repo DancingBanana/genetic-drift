@@ -4,12 +4,6 @@ define ['cs!models/Character'], (Character) ->
 
         planted: false
 
-        register: =>
-            super
-            @entity.onKeydown @onKeydown
-            @entity.onKeyup @onKeyup
-            @
-
         onKeydown: (e) =>
 
             pos = @entity.position()
