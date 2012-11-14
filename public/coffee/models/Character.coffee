@@ -39,24 +39,25 @@ define ['cs!models/DynamicEntity', 'image!/img/character.png'], (DynamicEntity, 
             spriteY: 0
 
         onTick: =>
+            @speed = @entity._body.m_linearVelocity.x
             # Determines the action method to run for updating the sprite
             actionMethod = 'onTick' + @currentAction[0].toUpperCase() + @currentAction[1..-1]
             # Update the sprite according to the actionMethod
             @[actionMethod].apply @
 
         onTickRunRight: =>
-            @frame = ++@frame % @actionMap.runRight.frames
-            x = @actionMap.runRight.start + @frame
+            @frame = @frame + @frameAdvanceSpeedX()
+            x = @actionMap.runRight.start + Math.floor(@frame) % @actionMap.runRight.frames
             y = @actionMap.runRight.row
             @entity.sprite x, y
-            @setAction 'standRight' if @entity._body.m_linearVelocity.x is 0
+            @setAction 'standRight' if @speed is 0
 
         onTickRunLeft: =>
-            @frame = ++@frame % @actionMap.runLeft.frames
-            x = @actionMap.runLeft.start + @frame
+            @frame = @frame + @frameAdvanceSpeedX()
+            x = @actionMap.runRight.start + Math.floor(@frame) % @actionMap.runRight.frames
             y = @actionMap.runLeft.row
             @entity.sprite x, y
-            @setAction 'standLeft' if @entity._body.m_linearVelocity.x is 0
+            @setAction 'standLeft' if @speed is 0
 
         onTickStandRight: =>
             x = @actionMap.standRight.start
@@ -73,5 +74,11 @@ define ['cs!models/DynamicEntity', 'image!/img/character.png'], (DynamicEntity, 
             @previousAction = @currentAction
             @currentAction = action
             @frame = 0
+
+        frameAdvanceSpeedX: =>
+            # Determine amount to add to frame based on movement speed
+            frameAdvance = Math.abs(@speed) / @maxVelocityX
+            frameAdvance = Math.max frameAdvance, .25
+            frameAdvance = Math.min frameAdvance, 1
 
     return Character

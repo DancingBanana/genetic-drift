@@ -1,7 +1,10 @@
 define [], () ->
 
     class Entity
+        maxVelocityX: 0
+
         constructor: (@world, @overrides = {}) ->
+            @maxVelocityX = @overrides['maxVelocityX'] if @overrides['maxVelocityX']
 
         entity: {}
 
