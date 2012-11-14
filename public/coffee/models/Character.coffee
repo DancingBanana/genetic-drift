@@ -19,6 +19,10 @@ define ['cs!models/DynamicEntity', 'image!/img/character.png'], (DynamicEntity, 
                 row: 1
                 start: 0
                 frames: 7
+            runLeft:
+                row: 2
+                start: 0
+                frames: 7
 
         template:
             name: 'character'
@@ -46,6 +50,13 @@ define ['cs!models/DynamicEntity', 'image!/img/character.png'], (DynamicEntity, 
             y = @actionMap.runRight.row
             @entity.sprite x, y
             @setAction 'standRight' if @entity._body.m_linearVelocity.x is 0
+
+        onTickRunLeft: =>
+            @frame = ++@frame % @actionMap.runLeft.frames
+            x = @actionMap.runLeft.start + @frame
+            y = @actionMap.runLeft.row
+            @entity.sprite x, y
+            @setAction 'standLeft' if @entity._body.m_linearVelocity.x is 0
 
         onTickStandRight: =>
             x = @actionMap.standRight.start
