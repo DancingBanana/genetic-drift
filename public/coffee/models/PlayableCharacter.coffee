@@ -15,11 +15,13 @@ define ['cs!models/Character'], (Character) ->
             if e.keyCode is 37
                 @entity.friction 0
                 @entity.setForce 'movement', 8, 270
+                @setAction 'standLeft'
                 return false
 
             if e.keyCode is 39
                 @entity.friction 0
                 @entity.setForce 'movement', 8, 90
+                @setAction 'standRight'
                 return false
 
         onKeyup: (e) =>
