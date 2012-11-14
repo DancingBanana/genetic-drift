@@ -9,7 +9,7 @@ require.config({
     },
     shim: {
         boxbox: {
-            deps: ['/js/lib/boxbox/Box2dWeb-2.1.a.3'],
+            deps: ['/js/lib/boxbox/Box2dWeb-2.1.a.3.js'],
             exports: 'boxbox'
         }
     }
