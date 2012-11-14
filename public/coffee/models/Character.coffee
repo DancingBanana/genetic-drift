@@ -2,7 +2,6 @@ define ['cs!models/DynamicEntity', 'image!/img/character.png'], (DynamicEntity, 
 
     class Character extends DynamicEntity
         frame: 0
-        frameMod: 7
         currentAction: 'standRight'
         previousAction: 'standRight'
 
@@ -11,11 +10,15 @@ define ['cs!models/DynamicEntity', 'image!/img/character.png'], (DynamicEntity, 
             standRight:
                 row: 0
                 start: 0
-                end: 0
+                frames: 1
             standLeft:
                 row: 0
                 start: 1
-                end: 1
+                frames: 1
+            runRight:
+                row: 1
+                start: 0
+                frames: 7
 
         template:
             name: 'character'
@@ -34,12 +37,15 @@ define ['cs!models/DynamicEntity', 'image!/img/character.png'], (DynamicEntity, 
         onTick: =>
             # Determines the action method to run for updating the sprite
             actionMethod = 'onTick' + @currentAction[0].toUpperCase() + @currentAction[1..-1]
+            # Update the sprite according to the actionMethod
             @[actionMethod].apply @
 
         onTickRunRight: =>
-            @frame++
-            @frame = @frame % @frameMod
-            @entity.sprite @frame, 0
+            @frame = ++@frame % @actionMap.runRight.frames
+            x = @actionMap.runRight.start + @frame
+            y = @actionMap.runRight.row
+            @entity.sprite x, y
+            @setAction 'standRight' if @entity._body.m_linearVelocity.x is 0
 
         onTickStandRight: =>
             x = @actionMap.standRight.start
@@ -52,6 +58,7 @@ define ['cs!models/DynamicEntity', 'image!/img/character.png'], (DynamicEntity, 
             @entity.sprite x, y
 
         setAction: (action) =>
+            if action is @currentAction then return
             @previousAction = @currentAction
             @currentAction = action
             @frame = 0
