@@ -8,8 +8,6 @@ define ['cs!models/Character'], (Character) ->
 
             pos = @entity.position()
 
-            # console.log @entity
-
             if e.keyCode is 32 # and standingOn.length
                 @entity.applyImpulse 20, 0, -1
                 return false
