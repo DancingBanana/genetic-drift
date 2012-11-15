@@ -6,7 +6,6 @@ define ['cs!models/Character'], (Character) ->
 
         onKeydown: (e) =>
 
-            pos = @entity.position()
 
             if e.keyCode is 32 # and standingOn.length
                 @entity.applyImpulse 20, 0, -1
