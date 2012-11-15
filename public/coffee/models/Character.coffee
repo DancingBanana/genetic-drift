@@ -23,6 +23,14 @@ define ['cs!models/DynamicEntity', 'image!/img/character.png'], (DynamicEntity, 
                 row: 2
                 start: 0
                 frames: 7
+            jumpRight:
+                row: 3
+                start: 1
+                frames: 3
+            jumpLeft:
+                row: 3
+                start: 5
+                frames: 3
 
         template:
             name: 'character'
@@ -40,6 +48,7 @@ define ['cs!models/DynamicEntity', 'image!/img/character.png'], (DynamicEntity, 
 
         onTick: =>
             @speed = @entity._body.m_linearVelocity.x
+            @speedY = @entity._body.m_linearVelocity.y
             # Determines the action method to run for updating the sprite
             actionMethod = 'onTick' + @currentAction[0].toUpperCase() + @currentAction[1..-1]
             # Update the sprite according to the actionMethod
@@ -68,6 +77,24 @@ define ['cs!models/DynamicEntity', 'image!/img/character.png'], (DynamicEntity, 
             x = @actionMap.standLeft.start
             y = @actionMap.standLeft.row
             @entity.sprite x, y
+
+        onTickJumpRight: =>
+            frameAdvance = 0 if @speedY < 0
+            frameAdvance = 2 if @speedY > 0
+            frameAdvance = 1 if Math.abs(@speedY) < .5
+            x = @actionMap.jumpRight.start + frameAdvance
+            y = @actionMap.jumpRight.row
+            @entity.sprite x, y
+            @setAction (if @speedY is 0 then (if @speed isnt 0 then 'runRight' else 'standRight') else 'jumpRight')
+
+        onTickJumpLeft: =>
+            frameAdvance = 0 if @speedY < 0
+            frameAdvance = 2 if @speedY > 0
+            frameAdvance = 1 if Math.abs(@speedY) < .5
+            x = @actionMap.jumpLeft.start + frameAdvance
+            y = @actionMap.jumpLeft.row
+            @entity.sprite x, y
+            @setAction (if @speedY is 0 then (if @speed isnt 0 then 'runLeft' else 'standLeft') else 'jumpLeft')
 
         setAction: (action) =>
             if action is @currentAction then return
