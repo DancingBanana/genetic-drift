@@ -6,22 +6,25 @@ define ['cs!models/Character'], (Character) ->
 
         onKeydown: (e) =>
 
-            pos = @entity.position()
-
-            # console.log @entity
+            @speed = @entity._body.m_linearVelocity.x
 
             if e.keyCode is 32 # and standingOn.length
                 @entity.applyImpulse 20, 0, -1
+                @setAction (if @speed > 0 or @currentAction.indexOf('Right') isnt -1 then 'jumpRight' else 'jumpLeft')
                 return false
 
             if e.keyCode is 37
                 @entity.friction 0
                 @entity.setForce 'movement', 8, 270
+                console.log @currentAction, @currentAction.indexOf 'jump'
+                if @currentAction.indexOf('jump') is -1 then @setAction 'runLeft'
                 return false
 
             if e.keyCode is 39
                 @entity.friction 0
                 @entity.setForce 'movement', 8, 90
+                console.log @currentAction, @currentAction.indexOf 'jump'
+                if @currentAction.indexOf('jump') is -1 then @setAction 'runRight'
                 return false
 
         onKeyup: (e) =>
