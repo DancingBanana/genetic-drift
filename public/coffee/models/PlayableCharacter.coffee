@@ -25,6 +25,13 @@ define ['cs!models/Character'], (Character) ->
                 if @currentAction.indexOf('jump') is -1 then @setAction 'runRight'
                 return false
 
+            if e.keyCode is 67
+                pos = @entity.position()
+                clone = new Character @world,
+                    x: pos.x
+                    y: pos.y
+                clone.register()
+
         onKeyup: (e) =>
 
             if e.keyCode is 37 or e.keyCode is 39
