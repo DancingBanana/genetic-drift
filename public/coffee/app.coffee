@@ -6,6 +6,8 @@ define [
 
     $canvas = $ '#gamescape'
     canvas = $canvas.get 0
+    canvas.width = document.width
+    canvas.height = document.height
     world = boxbox.createWorld canvas, { collisionOutlines: true, scale:32, tickFrequency: 100 }
 
     grounds = (new GroundEntity world, options).register() for options in [
