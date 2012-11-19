@@ -15,6 +15,14 @@ define ['cs!models/DynamicEntity', 'image!/img/character.png'], (DynamicEntity, 
                 row: 0
                 start: 1
                 frames: 1
+            attackRight:
+                row: 4
+                start: 0
+                frames: 1
+            attackLeft:
+                row: 4
+                start: 1
+                frames: 1
             runRight:
                 row: 1
                 start: 0
@@ -95,6 +103,18 @@ define ['cs!models/DynamicEntity', 'image!/img/character.png'], (DynamicEntity, 
             y = @actionMap.jumpLeft.row
             @entity.sprite x, y
             @setAction (if @speedY is 0 then (if @speed isnt 0 then 'runLeft' else 'standLeft') else 'jumpLeft')
+
+        onTickAttackRight: =>
+            x = @actionMap.attackRight.start
+            y = @actionMap.attackRight.row
+            @entity.sprite x, y
+            @setAction @previousAction
+
+        onTickAttackLeft: =>
+            x = @actionMap.attackLeft.start
+            y = @actionMap.attackLeft.row
+            @entity.sprite x, y
+            @setAction @previousAction
 
         setAction: (action) =>
             if action is @currentAction then return
