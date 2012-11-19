@@ -1,1 +1,10 @@
 php_flag engine off
+
+RewriteEngine on
+RewriteRule ^\.htaccess$ - [F]
+
+RewriteCond %{REQUEST_URI} !^/public/.*$
+RewriteRule ^(.*)$ /public/$1
+
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^.*$ - [NC,L]
