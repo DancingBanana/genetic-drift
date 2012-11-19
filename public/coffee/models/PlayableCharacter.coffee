@@ -31,6 +31,7 @@ define ['cs!models/Character'], (Character) ->
                     x: pos.x
                     y: pos.y
                 clone.register()
+                return false
 
             if e.keyCode is 86
                 @setAction (if @speed > 0 or @currentAction.indexOf('Right') isnt -1 then 'attackRight' else 'attackLeft')
