@@ -46,9 +46,9 @@ define ['cs!models/DynamicEntity', 'image!/img/character.png'], (DynamicEntity, 
             spriteSheet: true
             image: spriteSheet.src
             imageOffsetX: -.45
-            imageOffsetY: -.65
-            width: 1.5
-            height: 1.65
+            imageOffsetY: -.75
+            width: .75
+            height: 1.45
             spriteWidth: 64
             spriteHeight: 64
             spriteX: 0
