@@ -20,12 +20,8 @@ define [
         { width: 2, x: 13, y: 12.5 }
         { width: 8, x: 16, y: 5 } ]
 
-    #character = (new Character world, { x: 2, y: 10 } ).register()
-
     player = new PlayableCharacter world,
         name: 'player'
-        #height: .4
-        #width: .4
         x: 4
         y: 10
         shape: 'square'
