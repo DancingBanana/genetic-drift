@@ -5,6 +5,10 @@ define ['cs!models/DynamicEntity', 'image!/img/character.png'], (DynamicEntity, 
         currentAction: 'standRight'
         previousAction: 'standRight'
 
+        damageBox:
+            x: .25
+            y: .5
+
         # Hash which maps actions to their spritemap rows and cells
         actionMap:
             standRight:
@@ -105,12 +109,16 @@ define ['cs!models/DynamicEntity', 'image!/img/character.png'], (DynamicEntity, 
             @setAction (if @speedY is 0 then (if @speed isnt 0 then 'runLeft' else 'standLeft') else 'jumpLeft')
 
         onTickAttackRight: =>
+            target = @findTargets('right')
+            target[0].$wrapper.destroy() if target.length
             x = @actionMap.attackRight.start
             y = @actionMap.attackRight.row
             @entity.sprite x, y
             @setAction @previousAction
 
         onTickAttackLeft: =>
+            target = @findTargets('left')
+            target[0].$wrapper.destroy() if target.length
             x = @actionMap.attackLeft.start
             y = @actionMap.attackLeft.row
             @entity.sprite x, y
@@ -127,5 +135,20 @@ define ['cs!models/DynamicEntity', 'image!/img/character.png'], (DynamicEntity, 
             frameAdvance = Math.abs(@speed) / @maxVelocityX
             frameAdvance = Math.max frameAdvance, .25
             frameAdvance = Math.min frameAdvance, 1
+
+        findTargets: (direction) =>
+            pos = @entity.position()
+            x1 = x2 = 0
+            if direction is 'left'
+                x1 = pos.x - @damageBox.x
+                x2 = pos.x
+            else
+                x1 = pos.x + @template.width
+                x2 = x1 + @damageBox.x
+            y1 = pos.y
+            y2 = y1 + @damageBox.y
+            potentials = @world.find x1, y1, x2, y2
+            potentials = potentials.filter (target) -> target._name is 'character'
+            potentials
 
     return Character

@@ -6,6 +6,10 @@ define [], () ->
         constructor: (@world, @overrides = {}) ->
             @maxVelocityX = @overrides['maxVelocityX'] if @overrides['maxVelocityX']
 
+            # Pass down a reference to this wrapper to the entity, for easy
+            # reference
+            @overrides['$wrapper'] = @
+
         entity: {}
 
         template: {}
@@ -18,5 +22,8 @@ define [], () ->
             @entity.onKeyup @onKeyup if typeof @onKeyup is 'function'
             # Return this for chaining
             @
+
+        destroy: =>
+            @entity.destroy()
 
     return Entity
