@@ -9,7 +9,8 @@ define ['cs!models/Character'], (Character) ->
             @speed = @entity._body.m_linearVelocity.x
 
             if e.keyCode is 32 # and standingOn.length
-                @entity.applyImpulse 20, 0, -1
+                return unless @jumpable
+                @entity.applyImpulse 12, 0, -1
                 @setAction (if @speed > 0 or @currentAction.indexOf('Right') isnt -1 then 'jumpRight' else 'jumpLeft')
                 return false
             

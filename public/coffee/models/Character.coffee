@@ -4,6 +4,7 @@ define ['cs!models/DynamicEntity', 'image!/img/character.png'], (DynamicEntity, 
         frame: 0
         currentAction: 'standRight'
         previousAction: 'standRight'
+        jumpable: true
 
         damageBox:
             x: .25
@@ -55,14 +56,18 @@ define ['cs!models/DynamicEntity', 'image!/img/character.png'], (DynamicEntity, 
             height: 1.45
             spriteWidth: 64
             spriteHeight: 64
+            restitution: 0
             spriteX: 0
             spriteY: 0
+            maxVelocityX: 4
+            maxVelocityY: 8
 
         onTick: =>
             @speed = @entity._body.m_linearVelocity.x
             @speedY = @entity._body.m_linearVelocity.y
             # Determines the action method to run for updating the sprite
             actionMethod = 'onTick' + @currentAction[0].toUpperCase() + @currentAction[1..-1]
+            @checkJumpability()
             # Update the sprite according to the actionMethod
             @[actionMethod].apply @
 
@@ -123,6 +128,11 @@ define ['cs!models/DynamicEntity', 'image!/img/character.png'], (DynamicEntity, 
             y = @actionMap.attackLeft.row
             @entity.sprite x, y
             @setAction @previousAction
+
+        checkJumpability: =>
+            speedY = @entity._body.m_linearVelocity.y
+            console.log @jumpable, Math.abs(speedY)
+            @jumpable = speedY is 0
 
         setAction: (action) =>
             if action is @currentAction then return
