@@ -59,7 +59,7 @@ define ['cs!models/DynamicEntity', 'image!/img/character.png'], (DynamicEntity, 
             restitution: 0
             spriteX: 0
             spriteY: 0
-            maxVelocityX: 4
+            maxVelocityX: 6
             maxVelocityY: 8
 
         onTick: =>
