@@ -5,7 +5,9 @@ require.config({
         cs: '/js/lib/require/plugins/cs',
         'coffee-script': '/js/lib/require/plugins/coffee-script',
         image: '/js/lib/require/plugins/image',
-        boxbox: '/js/lib/boxbox/boxbox'
+        boxbox: '/js/lib/boxbox/boxbox',
+        text: '/js/lib/require/plugins/text',
+        json: '/js/lib/require/plugins/json'
     },
     shim: {
         boxbox: {
