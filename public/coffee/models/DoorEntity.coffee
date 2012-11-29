@@ -12,7 +12,7 @@ define ['cs!models/StaticEntity'], (StaticEntity) ->
 
         register: =>
             super()
-            eventNameBase = @template.name + 'Door'
+            eventNameBase = @entity._name + 'Door'
             @canvas.bind(eventNameBase + '.open', @onOpen)
             @canvas.bind(eventNameBase + '.close', @onClose)
 
