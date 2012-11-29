@@ -1,8 +1,10 @@
 define [
+  'jquery'
+  'boxbox'
   'cs!models/GroundEntity'
   'cs!models/PlayableCharacter'
   'cs!models/DoorEntity'
-  'json!/data/level01.json'], (GroundEntity, PlayableCharacter, DoorEntity, Level) ->
+  'json!/data/level01.json'], ($, boxbox, GroundEntity, PlayableCharacter, DoorEntity, Level) ->
 
   class Loader
     $canvas = $ '#gamescape'
