@@ -6,8 +6,6 @@ define [
   class Loader
     $canvas = $ '#gamescape'
     canvas = $canvas.get 0
-    canvas.width = document.width
-    canvas.height = document.height
 
     # Grab the first index in the array and reassign it to Level
 

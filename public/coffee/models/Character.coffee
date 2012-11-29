@@ -31,7 +31,7 @@ define ['cs!models/DynamicEntity', 'image!/img/character.png'], (DynamicEntity, 
             runRight:
                 row: 1
                 start: 0
-                frames: 7
+                frames: 9
             runLeft:
                 row: 2
                 start: 0
@@ -50,12 +50,13 @@ define ['cs!models/DynamicEntity', 'image!/img/character.png'], (DynamicEntity, 
             fixedRotation: true
             spriteSheet: true
             image: spriteSheet.src
-            imageOffsetX: -.45
-            imageOffsetY: -.75
-            width: .75
-            height: 1.45
-            spriteWidth: 64
-            spriteHeight: 64
+            imageOffsetX: -1.05
+            imageOffsetY: -.95
+            density:.1
+            width: 1.75
+            height: 4
+            spriteWidth: 128
+            spriteHeight: 128
             restitution: 0
             spriteX: 0
             spriteY: 0
