@@ -1,10 +1,11 @@
 define ['jquery'], ($) ->
 
     class Entity
-        maxVelocityX: 0
+        maxVelocityX: 1
 
         constructor: (@world, @overrides = {}) ->
-            @maxVelocityX = @overrides['maxVelocityX'] if @overrides['maxVelocityX']
+            @maxVelocityX = if @overrides['maxVelocityX'] then @overrides['maxVelocityX'] else @template['maxVelocityX']
+            @maxVelocityY = if @overrides['maxVelocityY'] then @overrides['maxVelocityY'] else @template['maxVelocityY']
 
             # Pass down a reference to this wrapper to the entity, for easy
             # reference

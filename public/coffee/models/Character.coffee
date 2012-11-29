@@ -35,28 +35,28 @@ define ['cs!models/DynamicEntity', 'image!/img/character.png'], (DynamicEntity, 
             runLeft:
                 row: 2
                 start: 0
-                frames: 7
+                frames: 9
             jumpRight:
                 row: 3
-                start: 1
-                frames: 3
+                start: 0
+                frames: 6
             jumpLeft:
-                row: 3
-                start: 5
-                frames: 3
+                row: 4
+                start: 0
+                frames: 6
 
         template:
             name: 'character'
             fixedRotation: true
             spriteSheet: true
             image: spriteSheet.src
-            imageOffsetX: -1.05
-            imageOffsetY: -.95
+            imageOffsetX: -.8
+            imageOffsetY: -.75
             density:.1
-            width: 1.75
-            height: 4
-            spriteWidth: 128
-            spriteHeight: 128
+            width: 1.35
+            height: 3
+            spriteWidth: 96
+            spriteHeight: 96
             restitution: 0
             spriteX: 0
             spriteY: 0
@@ -97,18 +97,14 @@ define ['cs!models/DynamicEntity', 'image!/img/character.png'], (DynamicEntity, 
             @entity.sprite x, y
 
         onTickJumpRight: =>
-            frameAdvance = 0 if @speedY < 0
-            frameAdvance = 2 if @speedY > 0
-            frameAdvance = 1 if Math.abs(@speedY) < .5
+            frameAdvance = @frameAdvanceJump(@actionMap.jumpRight.frames)
             x = @actionMap.jumpRight.start + frameAdvance
             y = @actionMap.jumpRight.row
             @entity.sprite x, y
             @setAction (if @speedY is 0 then (if @speed isnt 0 then 'runRight' else 'standRight') else 'jumpRight')
 
         onTickJumpLeft: =>
-            frameAdvance = 0 if @speedY < 0
-            frameAdvance = 2 if @speedY > 0
-            frameAdvance = 1 if Math.abs(@speedY) < .5
+            frameAdvance = @frameAdvanceJump(@actionMap.jumpLeft.frames)
             x = @actionMap.jumpLeft.start + frameAdvance
             y = @actionMap.jumpLeft.row
             @entity.sprite x, y
@@ -145,6 +141,21 @@ define ['cs!models/DynamicEntity', 'image!/img/character.png'], (DynamicEntity, 
             frameAdvance = Math.abs(@speed) / @maxVelocityX
             frameAdvance = Math.max frameAdvance, .25
             frameAdvance = Math.min frameAdvance, 1
+
+        frameAdvanceJump: (totalFrames) =>
+            # Determine which frame we're at based on the vertical speed
+            percent = Math.abs(@speedY / @maxVelocityY) * 100
+            mid = Math.floor(totalFrames / 2)
+            frameAdvance = (if @speedY < 0 then 0 else mid)
+            if @speedY < 0
+                if percent < 90 then frameAdvance = frameAdvance + 1
+                if percent < 30 then frameAdvance = frameAdvance + 1
+            else
+                if percent > 30 then frameAdvance = frameAdvance + 1
+                if percent > 70 then frameAdvance = frameAdvance + 1
+
+            console.log @speedY, @maxVelocityY, percent, frameAdvance
+            frameAdvance
 
         findTargets: (direction) =>
             pos = @entity.position()
