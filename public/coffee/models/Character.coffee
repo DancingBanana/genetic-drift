@@ -131,7 +131,6 @@ define ['cs!models/DynamicEntity', 'image!/img/character.png'], (DynamicEntity, 
 
         checkJumpability: =>
             speedY = @entity._body.m_linearVelocity.y
-            console.log @jumpable, Math.abs(speedY)
             @jumpable = speedY is 0
 
         setAction: (action) =>
