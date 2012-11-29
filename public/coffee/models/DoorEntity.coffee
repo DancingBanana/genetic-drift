@@ -12,14 +12,15 @@ define ['cs!models/StaticEntity'], (StaticEntity) ->
 
         register: =>
             super()
-            eventNameBase = @entity._name + 'Door'
+            @originalPosition = @entity.position()
+            eventNameBase = @entity._name
             @canvas.bind(eventNameBase + '.open', @onOpen)
             @canvas.bind(eventNameBase + '.close', @onClose)
 
         onOpen: =>
-            console.log 'Opening'
+            @entity.position {x:9999, y:9999}
 
         onClose: =>
-            console.log 'Close'
+            @entity.position @originalPosition
 
     return DoorEntity
