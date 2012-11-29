@@ -1,7 +1,8 @@
 define [
   'cs!models/GroundEntity'
   'cs!models/PlayableCharacter'
-  'json!/data/level01.json'], (GroundEntity, PlayableCharacter, Level) ->
+  'cs!models/DoorEntity'
+  'json!/data/level01.json'], (GroundEntity, PlayableCharacter, DoorEntity, Level) ->
 
   class Loader
     $canvas = $ '#gamescape'
@@ -16,6 +17,8 @@ define [
     world = boxbox.createWorld canvas, Level.World
 
     grounds = (new GroundEntity world, options).register() for options in Level.GroundEntity
+
+    doors = (new DoorEntity world, options).register() for options in Level.DoorEntity
 
     player = new PlayableCharacter world, Level.PlayableCharacter
 
