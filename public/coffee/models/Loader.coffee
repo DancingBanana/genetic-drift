@@ -4,7 +4,8 @@ define [
   'cs!models/GroundEntity'
   'cs!models/PlayableCharacter'
   'cs!models/DoorEntity'
-  'json!/data/level01.json'], ($, boxbox, GroundEntity, PlayableCharacter, DoorEntity, Level) ->
+  'cs!models/PlateEntity'
+  'json!/data/level01.json'], ($, boxbox, GroundEntity, PlayableCharacter, DoorEntity, PlateEntity, Level) ->
 
   class Loader
     $canvas = $ '#gamescape'
@@ -19,6 +20,8 @@ define [
     grounds = (new GroundEntity world, options).register() for options in Level.GroundEntity
 
     doors = (new DoorEntity world, options).register() for options in Level.DoorEntity
+
+    plates = (new PlateEntity world, options).register() for options in Level.PlateEntity
 
     player = new PlayableCharacter world, Level.PlayableCharacter
 

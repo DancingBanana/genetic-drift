@@ -23,6 +23,9 @@
     "maxVelocityX": 4
   },
   "DoorEntity": [
-    { "x": 3, "y": 11.72 }
+    { "name": "door1", "x": 3, "y": 11.72 }
+  ],
+  "PlateEntity": [
+    { "width": 3, "x": 10, "y": 13.12, "$target": "door1" }
   ]
 }
