@@ -1,4 +1,4 @@
-define [], () ->
+define ['jquery'], ($) ->
 
     class Entity
         maxVelocityX: 0
@@ -15,6 +15,7 @@ define [], () ->
         template: {}
 
         register: =>
+            @canvas = $ @world._canvas
             @entity = @world.createEntity(@template, @overrides)
             # Register the class's handlers with the entity, if defined
             @entity.onTick @onTick if typeof @onTick is 'function'

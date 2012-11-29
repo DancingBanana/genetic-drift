@@ -21,5 +21,8 @@
     "shape": "square",
     "color": "blue",
     "maxVelocityX": 4
-  }
+  },
+  "DoorEntity": [
+    { "x": 3, "y": 11.72 }
+  ]
 }
