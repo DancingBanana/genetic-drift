@@ -110,6 +110,7 @@ define ['cs!models/DynamicEntity', 'image!/img/character.png'], (DynamicEntity, 
             @entity.sprite x, y
 
         onTickJumpRight: =>
+            @jumping = true
             frameAdvance = @frameAdvanceJump(@actionMap.jumpRight.frames)
             x = @actionMap.jumpRight.start + frameAdvance
             y = @actionMap.jumpRight.row
@@ -117,6 +118,8 @@ define ['cs!models/DynamicEntity', 'image!/img/character.png'], (DynamicEntity, 
             @setAction (if @speedY is 0 then (if @speed isnt 0 then 'runRight' else 'standRight') else 'jumpRight')
 
         onTickJumpLeft: =>
+            if not @jumping then @entity.onImpact @stopJumping
+            @jumping = true
             frameAdvance = @frameAdvanceJump(@actionMap.jumpLeft.frames)
             x = @actionMap.jumpLeft.start + frameAdvance
             y = @actionMap.jumpLeft.row
@@ -177,17 +180,29 @@ define ['cs!models/DynamicEntity', 'image!/img/character.png'], (DynamicEntity, 
                 @unlockCharacter()
                 @setAction @previousAction
 
+        onImpact: =>
+            @stopJumping()
+
         lockCharacter: =>
             @actionLock = true
-            @entity.clearForce 'movement'
-            @entity.friction 3
+            @clearMovement()
 
         unlockCharacter: =>
             @actionLock = false
 
         checkJumpability: =>
             speedY = @entity._body.m_linearVelocity.y
-            @jumpable = speedY is 0
+            @jumpable = Math.abs(speedY) < .01
+
+        clearMovement: =>
+            @entity.clearForce 'movement'
+            @entity.friction 3
+
+        stopJumping: =>
+            @jumping = false
+            if @currentAction.match /jump/i then @clearMovement()
+            if @currentAction is 'jumpRight' then @setAction 'standRight'
+            if @currentAction is 'jumpLeft' then @setAction 'standLeft'
 
         setAction: (action) =>
             if action is @currentAction or @actionLock then return

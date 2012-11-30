@@ -1,12 +1,18 @@
-define ['cs!models/StaticEntity'], (StaticEntity) ->
+define ['cs!models/StaticEntity', 'image!/img/level-asset-ground.png'], (StaticEntity, image) ->
 
     class GroundEntity extends StaticEntity
         template:
             name: 'ground'
             type: 'static'
-            height: .2
-            color: 'green'
-            borderColor: 'rgba(0, 100, 0, .5)'
-            borderWidth: 3
+            spriteSheet: true
+            spriteHeight: 20
+            image: image.src
+            imageOffsetY: -.15
+            height: .6
+
+        constructor: (@world, @overrides = {}) ->
+            super(@world, @overrides)
+            @template.spriteWidth = @overrides.width * @world.scale() * .95
+            @template.imageOffsetX = -1 * @overrides.width * .25
 
     return GroundEntity

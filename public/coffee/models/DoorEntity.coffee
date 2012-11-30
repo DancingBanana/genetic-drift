@@ -3,6 +3,7 @@ define ['cs!models/StaticEntity'], (StaticEntity) ->
     class DoorEntity extends StaticEntity
 
         template:
+            type: 'static'
             name: 'door'
             height: 3
             width: .2
