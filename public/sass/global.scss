@@ -1,6 +1,126 @@
-.instructions {
-  position: absolute;
-  right: 200px;
-  top: 300px;
-  width: 250px;
+@import 'compass';
+@import 'compass/css3';
+
+%clearfix {
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+%is-nav {
+  @extend %clearfix;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  > li {
+    float: left;
+  }
+}
+
+@font-face {
+  font-family: 'dosissemibold';
+  src: url('../fonts/dosis-semibold-webfont.eot');
+  src: url('../fonts/dosis-semibold-webfont.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/dosis-semibold-webfont.woff') format('woff'),
+       url('../fonts/dosis-semibold-webfont.ttf') format('truetype'),
+       url('../fonts/dosis-semibold-webfont.svg#dosissemibold') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  @include background(image-url("main-background.jpg") 10% 70% repeat);
+  font-family: dosissemibold, sans-serif;
+}
+
+.stage {
+  header {
+    @include background(image-url("main-header.png") 0 0 no-repeat);
+    width: image-width("main-header.png");
+    height: image-height("main-header.png");
+    margin: 20px auto;
+  }
+  > .inner {
+    position: relative;
+    width: 1226px;
+    margin: 0 auto;
+  }
+  .bricks {
+    z-index: 5;
+    position: absolute;
+    top: 0;
+    @include background(image-url("brick-border-background.jpg") 0 0 repeat-y);
+    width: 75px;
+    height: 640px;
+    border-color: #797052;
+    &.left {
+      left: 102px;
+      border-right-width: 2px;
+      border-right-style: solid;
+      @include box-shadow(-5px 0 10px #3e3e3e);
+    }
+    &.right {
+      right: 102px;
+      border-left-width: 2px;
+      border-left-style: solid;
+      @include box-shadow(5px 0 10px #3e3e3e);
+    }
+  }
+  .banner {
+    $totalHeight: (image-height("banner-background.jpg") + image-height("banner-corner.png") - 19);
+    z-index: 10;
+    position: relative;
+    @include background(image-url("banner-background.jpg") 0 0 no-repeat,
+                        image-url("banner-corner.png") left bottom no-repeat,
+                        image-url("banner-corner.png") right bottom no-repeat);
+    width: image-width("banner-background.jpg");
+    height: $totalHeight;
+    .btn {
+      position: absolute;
+      top: 20px;
+      cursor: pointer;
+      &:hover {
+        top: 21px;
+      }
+      &.info {
+        left: 60px;
+      }
+      &.credits {
+        right: 60px;
+      }
+    }
+    .controls {
+      @extend %is-nav;
+      width: 375px;
+      margin: 0 auto;
+      > li {
+        padding-top: 20px;
+        margin-left: 10px;
+        &:first-child {
+          margin-left: 0;
+        }
+        img {
+          @include box-shadow(0px 5px 10px rgba(0,0,0,.25));
+        }
+        .description {
+          display: block;
+          text-align: center;
+          font-size: 12px;
+          text-transform: uppercase;
+          color: #fff;
+          @include text-shadow(0 2px 5px #454545);
+        }
+      }
+    }
+  }
+}
+
+#gamescape {
+  display: block;
+  background-color: #fafafa;
+  margin: 0 auto;
 }
