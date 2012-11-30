@@ -1,12 +1,50 @@
 <!doctype html>
 <html>
   <head>
-    <title>Dancing Banana Game</title>
+    <title>Genetic Shift &mdash; Dancing Banana Studios</title>
     <script data-main="/js/loader" src="/js/lib/require/require-jquery.js"></script>
     <link rel="stylesheet" href="/css/global.css">
   </head>
-  <body style="background-color:black;">
-    <canvas id="gamescape" width="1024" height="640" style="background-color:white">Your browser doesn't support canvas</canvas>
-    <p class="instructions">Use Arrow Keys to move the character<br>Use C to Clone<br>Use SPACEBAR to jump.</p>
+  <body>
+    <div class="stage">
+      <header></header>
+      <div class="inner">
+        <div class="bricks left"></div>
+        <div class="bricks right"></div>
+        <canvas id="gamescape" width="1024" height="640">
+          Your browser doesn't support canvas
+        </canvas> <!-- /#gamescape -->
+        <footer class="banner">
+          <div class="btn info">
+            <img src="img/info-btn.png" alt="banner-button">
+          </div> <!-- /.btn.info -->
+          <div class="btn credits">
+            <img src="img/credits-btn.png" alt="banner-button">
+          </div> <!-- /.btn.credits -->
+          <ul class="controls">
+            <li>
+              <img src="img/key-left-btn.png" alt="control-button">
+              <span class="description">Left</span>
+            </li>
+            <li>
+              <img src="img/key-right-btn.png" alt="control-button">
+              <span class="description">Right</span>
+            </li>
+            <li>
+              <img src="img/key-space-btn.png" alt="control-button">
+              <span class="description">Jump</span>
+            </li>
+            <li>
+              <img src="img/key-clone-btn.png" alt="control-button">
+              <span class="description">Clone</span>
+            </li>
+            <li>
+              <img src="img/key-attack-btn.png" alt="control-button">
+              <span class="description">Attack</span>
+            </li>
+          </ul> <!-- /.controls -->
+        </footer> <!-- /.banner -->
+      </div> <!-- /.inner -->
+    </div> <!-- /.stage -->
   </body>
 </html> 
