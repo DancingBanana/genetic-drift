@@ -1,4 +1,4 @@
-define ['cs!models/StaticEntity'], (StaticEntity) ->
+define ['cs!models/StaticEntity', 'image!/img/level-asset-door.png'], (StaticEntity, image) ->
 
     class DoorEntity extends StaticEntity
 
@@ -6,10 +6,18 @@ define ['cs!models/StaticEntity'], (StaticEntity) ->
             type: 'static'
             name: 'door'
             height: 3
-            width: .2
-            color: 'red'
+            width: .3
+            image: image.src
+            imageOffsetX: -.1
             fixedRotation: true
+            spriteSheet: true
+            spriteWidth: 10
             density: 100 # Make it impossible to move
+
+        constructor: (@world, @overrides = {}) ->
+            @template.spriteHeight = @overrides.height * @world.scale() * .95
+            @template.imageOffsetY = -1 * @overrides.height * .25
+            super @world, @overrides
 
         register: =>
             super()
