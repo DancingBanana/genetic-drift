@@ -171,13 +171,7 @@ define ['cs!models/DynamicEntity', 'image!/img/character.png'], (DynamicEntity, 
             @frame = @frame + 1
 
             if @frame > 10
-                pos = @entity.position()
-                x = pos.x
-                if @previousAction.match /right/i then x = x + .1
-                clone = new Character @world,
-                    x: x
-                    y: pos.y
-                clone.register()
+                @createClone()
                 @unlockCharacter()
                 @setAction @previousAction
 

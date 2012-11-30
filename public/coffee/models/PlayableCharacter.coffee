@@ -1,4 +1,4 @@
-define ['cs!models/Character'], (Character) ->
+define ['cs!models/Character', 'cs!models/CloneCharacter'], (Character, CloneCharacter) ->
 
     class PlayableCharacter extends Character
 
@@ -50,5 +50,14 @@ define ['cs!models/Character'], (Character) ->
                 @entity.clearForce 'movement'
                 @entity.friction 3
                 return false
+
+        createClone: =>
+            pos = @entity.position()
+            x = pos.x
+            if @previousAction.match /right/i then x = x + .1
+            clone = new CloneCharacter @world,
+                x: x
+                y: pos.y
+            clone.register()
 
     return PlayableCharacter
