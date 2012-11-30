@@ -10,13 +10,19 @@ define [
 
   class Loader
 
-    currentLevel = 0
+    @currentLevel = 0
 
     constructor: ->
       @loadLevel Level
-      @currentLevel = 1
+      # @currentLevel = 1
 
     loadLevel: (levelRequested) =>
+
+      # if (JSON.stringify(grounds.length) or JSON.stringify(doors.length) or JSON.stringify(plates.length)) and @currentLevel > 0
+      #   do grounds.destroy
+      #   do doors.destroy
+      #   do plates.destroy
+
       $canvas = $ '#gamescape'
       canvas = $canvas.get 0
 
@@ -34,14 +40,20 @@ define [
 
       player.register()
 
-      @currentLevel += 1
+      if !@currentLevel
+        @currentLevel = 1
+      else
+        @currentLevel = @currentLevel + 1
 
     nextLevel: (levelRequested) =>
-      if levelRequested isnt @currentLevel
+      # return if levelRequested is @currentLevel
+      # console.log levelRequested
+      if levelRequested < 4 or levelRequested > 0
         require ['jquery',"json!/data/level0#{levelRequested}.json"], ($, newLevel) =>
-          $('#gamescape').on 'requestLevel', (e) =>
-            @loadLevel newLevel
-
+          # $('#gamescape').on 'requestLevel', (e) =>
+          @loadLevel newLevel
+      # else
+      #   console.log "whoops #{levelRequested} is too high a number"
       return
 
   return Loader
