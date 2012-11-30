@@ -34,11 +34,8 @@ define ['cs!models/Character'], (Character) ->
 
             # Clone Action
             if e.keyCode is 67
-                pos = @entity.position()
-                clone = new Character @world,
-                    x: pos.x
-                    y: pos.y
-                clone.register()
+                if @actionLock then return
+                @setAction 'clone'
                 return false
 
             # Attack

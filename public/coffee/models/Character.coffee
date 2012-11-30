@@ -53,6 +53,10 @@ define ['cs!models/DynamicEntity', 'image!/img/character.png'], (DynamicEntity, 
                 row: 9
                 start: 0
                 frames: 5
+            clone:
+                row: 5
+                start: 0
+                frames: 4
 
         template:
             name: 'character'
@@ -154,6 +158,24 @@ define ['cs!models/DynamicEntity', 'image!/img/character.png'], (DynamicEntity, 
                 @destroy()
             @entity.sprite x, y
             @frame = @frame + 1
+
+        onTickClone: =>
+            @lockCharacter()
+            y = @actionMap.clone.row
+            x = @frame % @actionMap.clone.frames
+            @entity.sprite x, y
+            @frame = @frame + 1
+
+            if @frame > 10
+                pos = @entity.position()
+                x = pos.x
+                if @previousAction.match /right/i then x = x + .1
+                clone = new Character @world,
+                    x: x
+                    y: pos.y
+                clone.register()
+                @unlockCharacter()
+                @setAction @previousAction
 
         lockCharacter: =>
             @actionLock = true
