@@ -123,4 +123,5 @@ body {
   display: block;
   background-color: #fafafa;
   margin: 0 auto;
+  @include background(image-url('level-asset-background-01-dev.png'));
 }
