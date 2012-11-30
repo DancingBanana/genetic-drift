@@ -61,6 +61,7 @@ define ['cs!models/DynamicEntity', 'image!/img/character.png'], (DynamicEntity, 
         template:
             name: 'character'
             fixedRotation: true
+            friction: .5
             spriteSheet: true
             image: spriteSheet.src
             imageOffsetX: -.8
@@ -73,7 +74,7 @@ define ['cs!models/DynamicEntity', 'image!/img/character.png'], (DynamicEntity, 
             restitution: 0
             spriteX: 0
             spriteY: 0
-            maxVelocityX: 6
+            maxVelocityX: 10
             maxVelocityY: 8
 
         onTick: =>
@@ -196,7 +197,7 @@ define ['cs!models/DynamicEntity', 'image!/img/character.png'], (DynamicEntity, 
 
         clearMovement: =>
             @entity.clearForce 'movement'
-            @entity.friction 3
+            @entity.friction .5
 
         stopJumping: =>
             @jumping = false

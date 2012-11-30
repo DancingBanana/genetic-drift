@@ -20,7 +20,7 @@ define ['cs!models/Character'], (Character) ->
             if e.keyCode is 37 # or e.keyCode is 65
                 if @actionLock then return
                 @entity.friction 0
-                @entity.setForce 'movement', 8, 270
+                @entity.setForce 'movement', 12, 270
                 if @currentAction.indexOf('jump') is -1 then @setAction 'runLeft'
                 return false
 
@@ -28,7 +28,7 @@ define ['cs!models/Character'], (Character) ->
             if e.keyCode is 39 # or e.keyCode is 68
                 if @actionLock then return
                 @entity.friction 0
-                @entity.setForce 'movement', 8, 90
+                @entity.setForce 'movement', 12, 90
                 if @currentAction.indexOf('jump') is -1 then @setAction 'runRight'
                 return false
 
