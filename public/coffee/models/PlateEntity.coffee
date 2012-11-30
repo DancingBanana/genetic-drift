@@ -1,16 +1,25 @@
-define ['cs!models/StaticEntity'], (StaticEntity) ->
+define ['cs!models/StaticEntity', 'image!/img/level-asset-pressure-plate.png'], (StaticEntity, image) ->
 
     class PlateEntity extends StaticEntity
 
         template:
             active: false
-            height: .1
+            height: .4
+            width: 1.7
+            image: image.src
+            spriteSheet: true
+            spriteHeight: 9
+            spriteWidth: 53
+            imageOffsetX: -.4
+            imageOffsetY: -.05
 
         onTick: =>
             if @isActivated()
                 @canvas.trigger @entity.$target + '.open'
+                @entity.sprite 1, 0
             else
                 @canvas.trigger @entity.$target + '.close'
+                @entity.sprite 0, 0
 
         isActivated: =>
             pos = @entity.position()
