@@ -1,6 +1,5 @@
 {
   "World": {
-    "collisionOutlines": true,
     "scale": 32,
     "tickFrequency": 100
   },
