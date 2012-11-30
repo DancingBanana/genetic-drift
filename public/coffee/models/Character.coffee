@@ -4,6 +4,7 @@ define ['cs!models/DynamicEntity', 'image!/img/character.png'], (DynamicEntity, 
         frame: 0
         currentAction: 'standRight'
         previousAction: 'standRight'
+        actionLock: false
         jumpable: true
 
         damageBox:
@@ -126,7 +127,10 @@ define ['cs!models/DynamicEntity', 'image!/img/character.png'], (DynamicEntity, 
             if not target.length
                 @setAction @previousAction
                 @attackFrame = 0
-            target[0].$wrapper.setAction 'disintegrate'
+                @unlockCharacter()
+                return
+            @lockCharacter()
+            target[0].$wrapper?.setAction 'disintegrate'
 
         onTickAttackLeft: =>
             x = @frameAdvanceAttack 'attackLeft'
@@ -136,10 +140,13 @@ define ['cs!models/DynamicEntity', 'image!/img/character.png'], (DynamicEntity, 
             if not target.length
                 @setAction @previousAction
                 @attackFrame = 0
+                @unlockCharacter()
+                return
+            @lockCharacter()
             target[0].$wrapper.setAction 'disintegrate'
 
         onTickDisintegrate: =>
-            console.log 'here'
+            @lockCharacter()
             dir = (if @previousAction.match /left/i then 'disintegrateLeft' else 'disintegrateRight')
             y = @actionMap[dir].row
             x = Math.floor @frame/3
@@ -148,12 +155,20 @@ define ['cs!models/DynamicEntity', 'image!/img/character.png'], (DynamicEntity, 
             @entity.sprite x, y
             @frame = @frame + 1
 
+        lockCharacter: =>
+            @actionLock = true
+            @entity.clearForce 'movement'
+            @entity.friction 3
+
+        unlockCharacter: =>
+            @actionLock = false
+
         checkJumpability: =>
             speedY = @entity._body.m_linearVelocity.y
             @jumpable = speedY is 0
 
         setAction: (action) =>
-            if action is @currentAction then return
+            if action is @currentAction or @actionLock then return
             @previousAction = @currentAction
             @currentAction = action
             @frame = 0

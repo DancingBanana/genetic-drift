@@ -10,6 +10,7 @@ define ['cs!models/Character'], (Character) ->
 
             # Jump
             if e.keyCode is 32
+                if @actionLock then return
                 return unless @jumpable
                 @entity.applyImpulse 12, 0, -1
                 @setAction (if @speed > 0 or @currentAction.indexOf('Right') isnt -1 then 'jumpRight' else 'jumpLeft')
@@ -17,6 +18,7 @@ define ['cs!models/Character'], (Character) ->
             
             # Move Left
             if e.keyCode is 37 # or e.keyCode is 65
+                if @actionLock then return
                 @entity.friction 0
                 @entity.setForce 'movement', 8, 270
                 if @currentAction.indexOf('jump') is -1 then @setAction 'runLeft'
@@ -24,6 +26,7 @@ define ['cs!models/Character'], (Character) ->
 
             # Move right
             if e.keyCode is 39 # or e.keyCode is 68
+                if @actionLock then return
                 @entity.friction 0
                 @entity.setForce 'movement', 8, 90
                 if @currentAction.indexOf('jump') is -1 then @setAction 'runRight'
@@ -40,6 +43,7 @@ define ['cs!models/Character'], (Character) ->
 
             # Attack
             if e.keyCode is 86
+                if @actionLock then return
                 @setAction (if @speed > 0 or @currentAction.indexOf('Right') isnt -1 then 'attackRight' else 'attackLeft')
                 return false
 
