@@ -22,6 +22,7 @@ define ['jquery'], ($) ->
             @entity.onTick @onTick if typeof @onTick is 'function'
             @entity.onKeydown @onKeydown if typeof @onKeydown is 'function'
             @entity.onKeyup @onKeyup if typeof @onKeyup is 'function'
+            @entity.onImpact @onImpact if typeof @onImpact is 'function'
             # Return this for chaining
             @
 
