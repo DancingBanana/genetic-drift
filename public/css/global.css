@@ -24,12 +24,12 @@
 }
 
 body {
-  background: url('../img/main-background.jpg?1354232940') 10% 70% repeat;
+  background: url('../img/main-background.jpg?1354246938') 10% 70% repeat;
   font-family: dosissemibold, sans-serif;
 }
 
 .stage header {
-  background: url('../img/main-header.png?1354234666') 0 0 no-repeat;
+  background: url('../img/main-header.png?1354246938') 0 0 no-repeat;
   width: 1205px;
   height: 82px;
   margin: 20px auto;
@@ -43,7 +43,7 @@ body {
   z-index: 5;
   position: absolute;
   top: 0;
-  background: url('../img/brick-border-background.jpg?1354233418') 0 0 repeat-y;
+  background: url('../img/brick-border-background.jpg?1354246938') 0 0 repeat-y;
   width: 75px;
   height: 640px;
   border-color: #797052;
@@ -67,7 +67,7 @@ body {
 .stage .banner {
   z-index: 10;
   position: relative;
-  background: url('../img/banner-background.jpg?1354236288') 0 0 no-repeat, url('../img/banner-corner.png?1354236459') left bottom no-repeat, url('../img/banner-corner.png?1354236459') right bottom no-repeat;
+  background: url('../img/banner-background.jpg?1354246938') 0 0 no-repeat, url('../img/banner-corner.png?1354246938') left bottom no-repeat, url('../img/banner-corner.png?1354246938') right bottom no-repeat;
   width: 1226px;
   height: 140px;
 }
@@ -114,4 +114,5 @@ body {
   display: block;
   background-color: #fafafa;
   margin: 0 auto;
+  background: url('../img/level-asset-background-01-dev.png?1354246938');
 }
