@@ -21,6 +21,7 @@ define ['cs!models/StaticEntity', 'image!/img/level-asset-door.png'], (StaticEnt
 
         register: =>
             super()
+            if @entity.$orientation is 'horizontal' then @entity.rotation 90
             @originalPosition = @entity.position()
             eventNameBase = @entity._name
             @canvas.bind(eventNameBase + '.open', @onOpen)
