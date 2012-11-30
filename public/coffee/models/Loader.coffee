@@ -8,23 +8,37 @@ define [
   'json!/data/level01.json'], ($, boxbox, GroundEntity, PlayableCharacter, DoorEntity, PlateEntity, Level) ->
 
   class Loader
-    $canvas = $ '#gamescape'
-    canvas = $canvas.get 0
 
-    # Grab the first index in the array and reassign it to Level
+    currentLevel = 0
 
-    # console.log 'Level', Level if console.log?
+    constructor: ->
+      @loadLevel Level
+      @currentLevel = 1
 
-    world = boxbox.createWorld canvas, Level.World
+    loadLevel: (levelRequested) =>
+      $canvas = $ '#gamescape'
+      canvas = $canvas.get 0
 
-    grounds = (new GroundEntity world, options).register() for options in Level.GroundEntity
+      world = boxbox.createWorld canvas, levelRequested.World
 
-    doors = (new DoorEntity world, options).register() for options in Level.DoorEntity
+      grounds = (new GroundEntity world, options).register() for options in levelRequested.GroundEntity
 
-    plates = (new PlateEntity world, options).register() for options in Level.PlateEntity
+      doors = (new DoorEntity world, options).register() for options in levelRequested.DoorEntity
 
-    player = new PlayableCharacter world, Level.PlayableCharacter
+      plates = (new PlateEntity world, options).register() for options in levelRequested.PlateEntity
 
-    player.register()
+      player = new PlayableCharacter world, levelRequested.PlayableCharacter
+
+      player.register()
+
+      @currentLevel += 1
+
+    nextLevel: (levelRequested) =>
+      if levelRequested isnt @currentLevel
+        require ['jquery',"json!/data/level0#{levelRequested}.json"], ($, newLevel) =>
+          $('#gamescape').on 'requestLevel', (e) =>
+            @loadLevel newLevel
+
+      return
 
   return Loader
