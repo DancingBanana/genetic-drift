@@ -4,6 +4,7 @@ define ['cs!models/DynamicEntity', 'image!/img/character.png'], (DynamicEntity, 
         frame: 0
         currentAction: 'standRight'
         previousAction: 'standRight'
+        actionLock: false
         jumpable: true
 
         damageBox:
@@ -21,13 +22,13 @@ define ['cs!models/DynamicEntity', 'image!/img/character.png'], (DynamicEntity, 
                 start: 1
                 frames: 1
             attackRight:
-                row: 4
+                row: 6
                 start: 0
-                frames: 1
+                frames: 5
             attackLeft:
-                row: 4
-                start: 1
-                frames: 1
+                row: 7
+                start: 0
+                frames: 5
             runRight:
                 row: 1
                 start: 0
@@ -44,6 +45,18 @@ define ['cs!models/DynamicEntity', 'image!/img/character.png'], (DynamicEntity, 
                 row: 4
                 start: 0
                 frames: 6
+            disintegrateRight:
+                row: 8
+                start: 0
+                frames: 5
+            disintegrateLeft:
+                row: 9
+                start: 0
+                frames: 5
+            clone:
+                row: 5
+                start: 0
+                frames: 4
 
         template:
             name: 'character'
@@ -111,27 +124,73 @@ define ['cs!models/DynamicEntity', 'image!/img/character.png'], (DynamicEntity, 
             @setAction (if @speedY is 0 then (if @speed isnt 0 then 'runLeft' else 'standLeft') else 'jumpLeft')
 
         onTickAttackRight: =>
-            target = @findTargets('right')
-            target[0].$wrapper.destroy() if target.length
-            x = @actionMap.attackRight.start
+            x = @frameAdvanceAttack 'attackRight'
             y = @actionMap.attackRight.row
             @entity.sprite x, y
-            @setAction @previousAction
+            target = @findTargets('right')
+            if not target.length
+                @setAction @previousAction
+                @attackFrame = 0
+                @unlockCharacter()
+                return
+            @lockCharacter()
+            target[0].$wrapper?.setAction 'disintegrate'
 
         onTickAttackLeft: =>
-            target = @findTargets('left')
-            target[0].$wrapper.destroy() if target.length
-            x = @actionMap.attackLeft.start
+            x = @frameAdvanceAttack 'attackLeft'
             y = @actionMap.attackLeft.row
             @entity.sprite x, y
-            @setAction @previousAction
+            target = @findTargets('left')
+            if not target.length
+                @setAction @previousAction
+                @attackFrame = 0
+                @unlockCharacter()
+                return
+            @lockCharacter()
+            target[0].$wrapper.setAction 'disintegrate'
+
+        onTickDisintegrate: =>
+            @lockCharacter()
+            dir = (if @previousAction.match /left/i then 'disintegrateLeft' else 'disintegrateRight')
+            y = @actionMap[dir].row
+            x = Math.floor @frame/2
+            if x >= (@actionMap[dir].start + @actionMap[dir].frames)
+                @destroy()
+            @entity.sprite x, y
+            @frame = @frame + 1
+
+        onTickClone: =>
+            @lockCharacter()
+            y = @actionMap.clone.row
+            x = @frame % @actionMap.clone.frames
+            @entity.sprite x, y
+            @frame = @frame + 1
+
+            if @frame > 10
+                pos = @entity.position()
+                x = pos.x
+                if @previousAction.match /right/i then x = x + .1
+                clone = new Character @world,
+                    x: x
+                    y: pos.y
+                clone.register()
+                @unlockCharacter()
+                @setAction @previousAction
+
+        lockCharacter: =>
+            @actionLock = true
+            @entity.clearForce 'movement'
+            @entity.friction 3
+
+        unlockCharacter: =>
+            @actionLock = false
 
         checkJumpability: =>
             speedY = @entity._body.m_linearVelocity.y
             @jumpable = speedY is 0
 
         setAction: (action) =>
-            if action is @currentAction then return
+            if action is @currentAction or @actionLock then return
             @previousAction = @currentAction
             @currentAction = action
             @frame = 0
@@ -156,6 +215,13 @@ define ['cs!models/DynamicEntity', 'image!/img/character.png'], (DynamicEntity, 
 
             console.log @speedY, @maxVelocityY, percent, frameAdvance
             frameAdvance
+
+        frameAdvanceAttack: (direction) =>
+            if not @attackFrame? then @attackFrame = @actionMap[direction].start
+            @attackFrame = @attackFrame + 1
+            if @attackFrame >= (@actionMap[direction].start + @actionMap[direction].frames)
+                @attackFrame = 2
+            @attackFrame
 
         findTargets: (direction) =>
             pos = @entity.position()
