@@ -4,7 +4,7 @@ define ['cs!models/StaticEntity', 'image!/img/level-asset-goal.png'], (StaticEnt
 
         template:
             type: 'static'
-            active: true
+            active: false
             image: image.src
             width: 5
             height: 3.3
@@ -24,7 +24,12 @@ define ['cs!models/StaticEntity', 'image!/img/level-asset-goal.png'], (StaticEnt
 
             # If one of the entities at the goal is the player,
             # trigger the level change event on the canvas
-            finished = targets.reduce (x, y) -> x or y._name is 'player'
-            if finished then @canvas.trigger('requestLevel')
+            if @isActivated(targets) then @canvas.trigger('requestLevel')
+
+        isActivated: (targets) =>
+            for target in targets
+                if target._name is 'player'
+                    return true
+            return false
 
     return GoalEntity
