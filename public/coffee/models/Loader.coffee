@@ -10,19 +10,18 @@ define [
   'cs!models/GoalEntity'
   'cs!models/WallEntity'
   'cs!SoundHelper'
-  'json!/data/level01.json'], ($, boxbox, GroundEntity, PlayableCharacter, DoorEntity, PlateEntity, BoxEntity, PlatformEntity, GoalEntity, WallEntity, SoundHelper, Level) ->
+  'json!/data/level01.json'], ($, boxbox, GroundEntity, PlayableCharacter, DoorEntity, PlateEntity, BoxEntity, PlatformEntity, GoalEntity, WallEntity, SoundHelper, level) ->
 
   class Loader
 
     currentLevel: 1
 
     constructor: ->
-      @nextLevel 1
       @currentLevel = 1
       $canvas = $ '#gamescape'
       @canvas = $canvas.get 0
       @sound = new SoundHelper $canvas
-      @loadLevel Level
+      @loadLevel level
       $('#gamescape').on 'nextLevel', (e) =>
         @nextLevel()
 
@@ -53,10 +52,8 @@ define [
           @player.register()
 
       @player.entity.position {x:levelRequested.PlayableCharacter.x, y:levelRequested.PlayableCharacter.y}
-      console.log 'here'
 
     nextLevel: =>
-      console.log @currentLevel
       @currentLevel = @currentLevel + 1
       if @currentLevel < 4
         require ["json!/data/level0#{@currentLevel}.json"], (newLevel) =>
