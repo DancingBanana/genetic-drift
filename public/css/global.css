@@ -48,6 +48,20 @@ body {
   left: 101px;
   z-index: 100;
 }
+.stage .game-over-container {
+  display: none;
+  cursor: pointer;
+  background: transparent url("/public/img/game-over-screen.jpg") center center no-repeat;
+  width: 1024px;
+  height: 640px;
+  position: absolute;
+  top: 0;
+  left: 101px;
+  z-index: 100;
+}
+.stage .game-over-container.is-active {
+  display: block;
+}
 .stage .credits-container {
   display: none;
   background: transparent url("/public/img/credits-screen.jpg") center center no-repeat;

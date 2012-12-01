@@ -66,7 +66,11 @@ define [
         require ["json!/data/level0#{@currentLevel}.json"], (newLevel) =>
           @loadLevel newLevel
       else
-        
+        $cont = $ '.game-over-container'
+        $cont.addClass 'is-active'
+        $cont.on 'click', () ->
+          $cont.removeClass 'is-active'
+          window.location = '/'
       return
 
   return Loader
