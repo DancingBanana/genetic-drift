@@ -15,4 +15,9 @@ define ['cs!models/StaticEntity', 'image!/img/level-asset-ground.png'], (StaticE
             @template.spriteWidth = @overrides.width * @world.scale() * .95
             @template.imageOffsetX = -1 * @overrides.width * .25
 
+        register: =>
+            super()
+            if @entity.$orientation is 'horizontal' then @entity.rotation 90
+            @
+
     return GroundEntity
