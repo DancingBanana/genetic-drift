@@ -7,7 +7,8 @@ define [
   'cs!models/PlateEntity'
   'cs!models/BoxEntity'
   'cs!models/PlatformEntity'
-  'json!/data/level01.json'], ($, boxbox, GroundEntity, PlayableCharacter, DoorEntity, PlateEntity, BoxEntity, PlatformEntity, Level) ->
+  'cs!models/GoalEntity'
+  'json!/data/level01.json'], ($, boxbox, GroundEntity, PlayableCharacter, DoorEntity, PlateEntity, BoxEntity, PlatformEntity, GoalEntity, Level) ->
 
   class Loader
 
@@ -40,6 +41,9 @@ define [
       boxes = (new BoxEntity world, options).register() for options in levelRequested.BoxEntity
 
       platforms = (new PlatformEntity world, options).register() for options in levelRequested.PlatformEntity
+
+      goal = new GoalEntity world, levelRequested.GoalEntity
+      goal.register()
 
       player = new PlayableCharacter world, levelRequested.PlayableCharacter
 
