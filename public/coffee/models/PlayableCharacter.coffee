@@ -26,7 +26,8 @@ define ['cs!models/Character', 'cs!models/CloneCharacter'], (Character, CloneCha
                 if @actionLock then return
                 @entity.friction 0
                 @entity.setForce 'movement', 12, 270
-                if @currentAction.indexOf('jump') is -1 then @setAction 'runLeft'
+                if @jumping then return
+                if not @currentAction.match /jump/i then @setAction 'runLeft'
                 return false
 
             # Move right
@@ -34,7 +35,8 @@ define ['cs!models/Character', 'cs!models/CloneCharacter'], (Character, CloneCha
                 if @actionLock then return
                 @entity.friction 0
                 @entity.setForce 'movement', 12, 90
-                if @currentAction.indexOf('jump') is -1 then @setAction 'runRight'
+                if @jumping then return
+                if not @currentAction.match /jump/i then @setAction 'runRight'
                 return false
 
             # Clone Action

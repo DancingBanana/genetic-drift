@@ -6,6 +6,7 @@ define ['cs!models/DynamicEntity', 'image!/img/character.png'], (DynamicEntity, 
         previousAction: 'standRight'
         actionLock: false
         jumpable: true
+        falling: false
 
         damageBox:
             x: .25
@@ -119,7 +120,6 @@ define ['cs!models/DynamicEntity', 'image!/img/character.png'], (DynamicEntity, 
             @setAction (if @speedY is 0 then (if @speed isnt 0 then 'runRight' else 'standRight') else 'jumpRight')
 
         onTickJumpLeft: =>
-            if not @jumping then @entity.onImpact @stopJumping
             @jumping = true
             frameAdvance = @frameAdvanceJump(@actionMap.jumpLeft.frames)
             x = @actionMap.jumpLeft.start + frameAdvance
@@ -202,6 +202,7 @@ define ['cs!models/DynamicEntity', 'image!/img/character.png'], (DynamicEntity, 
             @entity.friction .5
 
         stopJumping: =>
+            return unless @falling is true and @jumping is true
             @jumping = false
             if @currentAction.match /jump/i then @clearMovement()
             if @currentAction is 'jumpRight' then @setAction 'standRight'
@@ -225,13 +226,15 @@ define ['cs!models/DynamicEntity', 'image!/img/character.png'], (DynamicEntity, 
             mid = Math.floor(totalFrames / 2)
             frameAdvance = (if @speedY < 0 then 0 else mid)
             if @speedY < 0
-                if percent < 90 then frameAdvance = frameAdvance + 1
-                if percent < 30 then frameAdvance = frameAdvance + 1
+                frameAdvance = @frame
+                if @frame < 2
+                    @frame = @frame + 1
+                @falling = false
             else
+                if percent > 10 then frameAdvance = frameAdvance + 1
                 if percent > 30 then frameAdvance = frameAdvance + 1
-                if percent > 70 then frameAdvance = frameAdvance + 1
+                @falling = true
 
-            console.log @speedY, @maxVelocityY, percent, frameAdvance
             frameAdvance
 
         frameAdvanceAttack: (direction) =>
