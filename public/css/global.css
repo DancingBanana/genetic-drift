@@ -24,12 +24,12 @@
 }
 
 body {
-  background: url('../img/main-background.jpg?1354246938') 10% 70% repeat;
+  background: url('../img/main-background.jpg?1354256838') 10% 70% repeat;
   font-family: dosissemibold, sans-serif;
 }
 
 .stage header {
-  background: url('../img/main-header.png?1354246938') 0 0 no-repeat;
+  background: url('../img/main-header.png?1354256838') 0 0 no-repeat;
   width: 1205px;
   height: 82px;
   margin: 20px auto;
@@ -39,11 +39,33 @@ body {
   width: 1226px;
   margin: 0 auto;
 }
+.stage .intro-container {
+  background: transparent url("/public/img/intro-screen-01.jpg") center center no-repeat;
+  width: 1024px;
+  height: 640px;
+  position: absolute;
+  top: 0;
+  left: 101px;
+  z-index: 100;
+}
+.stage .next-intro-btn {
+  cursor: pointer;
+  position: absolute;
+  top: 340px;
+  left: 670px;
+  z-index: 200;
+  background: url('../img/next_button.png?1354321165') 0 0 no-repeat;
+  width: 49px;
+  height: 49px;
+}
+.stage .next-intro-btn:hover {
+  background: url('../img/next_button_hover.png?1354321394') 0 0 no-repeat;
+}
 .stage .bricks {
   z-index: 5;
   position: absolute;
   top: 0;
-  background: url('../img/brick-border-background.jpg?1354246938') 0 0 repeat-y;
+  background: url('../img/brick-border-background.jpg?1354256838') 0 0 repeat-y;
   width: 75px;
   height: 640px;
   border-color: #797052;
@@ -67,7 +89,7 @@ body {
 .stage .banner {
   z-index: 10;
   position: relative;
-  background: url('../img/banner-background.jpg?1354246938') 0 0 no-repeat, url('../img/banner-corner.png?1354246938') left bottom no-repeat, url('../img/banner-corner.png?1354246938') right bottom no-repeat;
+  background: url('../img/banner-background.jpg?1354256838') 0 0 no-repeat, url('../img/banner-corner.png?1354256838') left bottom no-repeat, url('../img/banner-corner.png?1354256838') right bottom no-repeat;
   width: 1226px;
   height: 140px;
 }
@@ -114,5 +136,5 @@ body {
   display: block;
   background-color: #fafafa;
   margin: 0 auto;
-  background: url('../img/level-asset-background-01.png?1354246938');
+  background: url('../img/level-asset-background-01-dev.png?1354256838');
 }

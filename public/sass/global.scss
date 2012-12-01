@@ -49,6 +49,28 @@ body {
     width: 1226px;
     margin: 0 auto;
   }
+  .intro-container {
+    background: transparent url("/public/img/intro-screen-01.jpg") center center no-repeat;
+    width: 1024px;
+    height: 640px;
+    position: absolute;
+    top: 0;
+    left: 101px;
+    z-index: 100;
+  }
+  .next-intro-btn {
+    cursor: pointer;
+    position: absolute;
+    top: 340px;
+    left: 670px;
+    z-index: 200;
+    @include background(image-url("next_button.png") 0 0 no-repeat);
+    width: image-width("next_button.png");
+    height: image-height("next_button.png");
+    &:hover {
+      @include background(image-url("next_button_hover.png") 0 0 no-repeat);
+    }
+  }
   .bricks {
     z-index: 5;
     position: absolute;

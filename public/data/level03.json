@@ -5,27 +5,43 @@
     "tickFrequency": 100
   },
   "GroundEntity": [
-    { "width": 20, "x": 10, "y": 13.22 },
-    { "width": 6, "x": 3, "y": 5 },
-    { "width": 2, "x": 9, "y": 6.5 },
-    { "width": 2, "x": 11, "y": 8 },
-    { "width": 2, "x": 13, "y": 9.5 },
-    { "width": 2, "x": 15, "y": 11 },
-    { "width": 2, "x": 13, "y": 12.5 },
-    { "width": 8, "x": 16, "y": 5 }
+    { "width": 30, "x": 16, "y": 20.3 },
+    { "width": 16.25, "x": 10.3, "y": 14.3 },
+    { "width": 8, "x": 27.4, "y": 14.3 },
+    { "width": 25, "x": 19, "y": 10.4 },
+    { "width": 19.3, "x": 10, "y": 3.9 },
+    { "width": 6, "x": 27.5, "y": 3.9 }
+  ],
+  "PlatformEntity": [
+    { "x": 13.3, "y": 17.7 },
+    { "x": 19.2, "y": 16 },
+    { "x": 24.3, "y": 18.5 },
+    { "x": 17.5, "y": 7.2 }
+  ],
+  "BoxEntity": [
+    { "x": 9, "y": 20 },
+    { "x": 24.5, "y": 13.4 },
+    { "x": 21.7, "y": 9.5 },
+    { "x": 16.5, "y": 6.4 }
   ],
   "PlayableCharacter": {
-    "name": "player",
-    "x": 4,
-    "y": 10,
-    "shape": "square",
-    "color": "blue",
+    "x": 5.5,
+    "y": 18.5,
     "maxVelocityX": 4
   },
   "DoorEntity": [
-    { "name": "door1", "x": 3, "y": 11.72 }
+    { "name": "door1", "x": 12, "y": 12.3, "height": 3.3 },
+    { "name": "door2", "$orientation": "horizontal", "x": 22.2, "height": 4.7, "y": 3.9 }
   ],
   "PlateEntity": [
-    { "width": 3, "x": 10, "y": 13.12, "$target": "door1" }
-  ]
+    { "x": 15, "y": 13.8, "$target": "none" },
+    { "x": 28, "y": 13.8, "$target": "door1" },
+    { "x": 27, "y": 9.9, "$target": "none" },
+    { "x": 19, "y": 9.9, "$target": "none" },
+    { "x": 12, "y": 9.9, "$target": "none" },
+    { "x": 18.2, "y": 6.9, "$target": "door2" }
+  ],
+  "GoalEntity": {
+    "x": 12, "y": 20
+  }
 }

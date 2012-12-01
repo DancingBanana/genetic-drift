@@ -12,25 +12,27 @@ define [
 
   class Loader
 
-    @currentLevel = 0
-
     constructor: ->
-      @loadLevel Level
-      $('#gamescape').on 'requestLevel', (e) =>
-        @loadLevel @currentLevelRequest
-      # @currentLevel = 1
+      @nextLevel 1
+      @currentLevel = 1
 
     loadLevel: (levelRequested) =>
-
-      # if (JSON.stringify(grounds.length) or JSON.stringify(doors.length) or JSON.stringify(plates.length)) and @currentLevel > 0
-      #   do grounds.destroy
-      #   do doors.destroy
-      #   do plates.destroy
 
       $canvas = $ '#gamescape'
       canvas = $canvas.get 0
 
       world = boxbox.createWorld canvas, levelRequested.World
+
+      if @currentLevel > 1
+        do grounds.destroy for ground in grounds
+        # return
+        # @currentLevel = 'done'
+        do doors.destroy for door in doors
+        do plates.destroy for plate in plates
+        do boxes.destroy for box in boxes
+        do platforms.destroy for platform in platforms
+        do goal.destroy
+        do player.destroy
 
       grounds = (new GroundEntity world, options).register() for options in levelRequested.GroundEntity
 
@@ -49,15 +51,21 @@ define [
 
       player.register()
 
-      if !@currentLevel
-        @currentLevel = 1
-      else
-        @currentLevel = @currentLevel + 1
+      # if !@currentLevel
+      #   @currentLevel = 1
+      # else
+      @currentLevel = @currentLevel + 1
+
+      $('#gamescape').on 'requestLevel', (e) =>
+        $(this).off 'requestLevel'
+        @nextLevel @currentLevel
+        return
+      return
 
     nextLevel: (levelRequested) =>
-      if levelRequested < 4 or levelRequested > 0
+      if levelRequested < 4
         require ['jquery',"json!/data/level0#{levelRequested}.json"], ($, newLevel) =>
-          @currentLevelRequest = newLevel
+          @loadLevel newLevel
       return
 
   return Loader

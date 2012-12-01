@@ -24,6 +24,7 @@ define ['cs!models/StaticEntity', 'image!/img/level-asset-goal.png'], (StaticEnt
 
             # If one of the entities at the goal is the player,
             # trigger the level change event on the canvas
+            # console.log 'target', targets if console.log?
             if @isActivated(targets) then @canvas.trigger('requestLevel')
 
         isActivated: (targets) =>

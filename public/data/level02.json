@@ -1,31 +1,30 @@
 {
   "World": {
-    "collisionOutlines": false,
+    "collisionOutlines": true,
     "scale": 32,
     "tickFrequency": 100
   },
   "GroundEntity": [
-    { "width": 20, "x": 10, "y": 13.22 },
-    { "width": 6, "x": 3, "y": 5 },
-    { "width": 20, "x": 9, "y": 6.5 },
-    { "width": 20, "x": 11, "y": 8 },
-    { "width": 20, "x": 13, "y": 9.5 },
-    { "width": 2, "x": 15, "y": 11 },
-    { "width": 2, "x": 13, "y": 12.5 },
-    { "width": 8, "x": 16, "y": 5 }
+    { "width": 0, "x": 0, "y": 0 }
+  ],
+  "PlatformEntity": [
+    { "x": 0, "y": 0 }
+  ],
+  "BoxEntity": [
+    { "x": 9, "y": 20 }
   ],
   "PlayableCharacter": {
-    "name": "player",
-    "x": 4,
-    "y": 10,
-    "shape": "square",
-    "color": "blue",
+    "x": 5.5,
+    "y": 18.5,
     "maxVelocityX": 4
   },
   "DoorEntity": [
-    { "name": "door1", "x": 3, "y": 11.72 }
+    { "name": "door1", "x": 12, "y": 12.3, "height": 3.3 }
   ],
   "PlateEntity": [
-    { "width": 3, "x": 10, "y": 13.12, "$target": "door1" }
-  ]
+    { "x": 15, "y": 13.8, "$target": "none" }
+  ],
+  "GoalEntity": {
+    "x": 20, "y": 20
+  }
 }
