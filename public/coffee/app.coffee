@@ -23,3 +23,4 @@ define [
 
     # do _introduction
     do $('.intro-container').remove
+    do $('.next-intro-btn').remove
