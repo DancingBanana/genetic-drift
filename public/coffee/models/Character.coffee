@@ -157,7 +157,7 @@ define ['cs!models/DynamicEntity', 'image!/img/character.png'], (DynamicEntity, 
             @lockCharacter()
             dir = (if @previousAction.match /left/i then 'disintegrateLeft' else 'disintegrateRight')
             y = @actionMap[dir].row
-            x = Math.floor @frame/2
+            x = @frame
             if x >= (@actionMap[dir].start + @actionMap[dir].frames)
                 @destroy()
             @entity.sprite x, y
