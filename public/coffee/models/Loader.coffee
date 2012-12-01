@@ -16,6 +16,13 @@ define [
     constructor: ->
       @nextLevel 1
       @currentLevel = 1
+      $canvas = $ '#gamescape'
+      @canvas = $canvas.get 0
+      @sound = new SoundHelper $canvas
+      @loadLevel Level
+      $('#gamescape').on 'requestLevel', (e) =>
+        @loadLevel @currentLevelRequest
+      # @currentLevel = 1
 
     loadLevel: (levelRequested) =>
 
@@ -33,6 +40,8 @@ define [
         do platforms.destroy for platform in platforms
         do goal.destroy
         do player.destroy
+
+      world = boxbox.createWorld @canvas, levelRequested.World
 
       grounds = (new GroundEntity world, options).register() for options in levelRequested.GroundEntity
 
