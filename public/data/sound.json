@@ -13,5 +13,11 @@
         "name": "attack",
         "src": "victorFork3.wav",
         "loop": true
+    },
+    {
+        "name": "music",
+        "src": "background.mp3",
+        "loop": true,
+        "autoplay": true
     }
 ]
