@@ -62,9 +62,11 @@ define [
 
     nextLevel: =>
       @currentLevel = @currentLevel + 1
-      if @currentLevel < 4
+      if @currentLevel < 3
         require ["json!/data/level0#{@currentLevel}.json"], (newLevel) =>
           @loadLevel newLevel
+      else
+        
       return
 
   return Loader

@@ -3,7 +3,7 @@ define ['cs!models/Character', 'cs!models/CloneCharacter'], (Character, CloneCha
     class PlayableCharacter extends Character
 
         planted: false
-        health: 5
+        health: 6
 
         constructor: (@world, @overrides = {}) ->
             @overrides.name = 'player'
