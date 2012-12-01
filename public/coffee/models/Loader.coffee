@@ -8,13 +8,17 @@ define [
   'cs!models/BoxEntity'
   'cs!models/PlatformEntity'
   'cs!models/GoalEntity'
-  'json!/data/level01.json'], ($, boxbox, GroundEntity, PlayableCharacter, DoorEntity, PlateEntity, BoxEntity, PlatformEntity, GoalEntity, Level) ->
+  'cs!SoundHelper'
+  'json!/data/level01.json'], ($, boxbox, GroundEntity, PlayableCharacter, DoorEntity, PlateEntity, BoxEntity, PlatformEntity, GoalEntity, SoundHelper, Level) ->
 
   class Loader
 
     @currentLevel = 0
 
     constructor: ->
+      $canvas = $ '#gamescape'
+      @canvas = $canvas.get 0
+      @sound = new SoundHelper $canvas
       @loadLevel Level
       $('#gamescape').on 'requestLevel', (e) =>
         @loadLevel @currentLevelRequest
@@ -27,10 +31,8 @@ define [
       #   do doors.destroy
       #   do plates.destroy
 
-      $canvas = $ '#gamescape'
-      canvas = $canvas.get 0
 
-      world = boxbox.createWorld canvas, levelRequested.World
+      world = boxbox.createWorld @canvas, levelRequested.World
 
       grounds = (new GroundEntity world, options).register() for options in levelRequested.GroundEntity
 
