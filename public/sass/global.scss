@@ -203,7 +203,7 @@ body {
   @include background(image-url('level-asset-background-01.png'));
 
   &.level2 {
-      @include background(image-url('level-asset-background-02-dev.png'));
+      @include background(image-url('level-asset-background-02.png'));
   }
 
   &.level3 {
