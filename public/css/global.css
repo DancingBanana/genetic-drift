@@ -270,11 +270,13 @@ body {
 #health-bar {
   background: url('/img/health-bar.png?1354373223');
   width: 28px;
-  height: 309px;
+  height: 286px;
+  overflow: hidden;
+  margin-bottom: 20px;
   background-repeat: no-repeat;
 }
 
-/* line 246, ../sass/global.scss */
+/* line 248, ../sass/global.scss */
 .heart {
   background: url('/img/health-bar-heart.png?1354373267');
   width: 22px;

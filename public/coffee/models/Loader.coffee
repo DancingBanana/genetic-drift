@@ -10,7 +10,8 @@ define [
   'cs!models/GoalEntity'
   'cs!models/WallEntity'
   'cs!SoundHelper'
-  'json!/data/level01.json'], ($, boxbox, GroundEntity, PlayableCharacter, DoorEntity, PlateEntity, BoxEntity, PlatformEntity, GoalEntity, WallEntity, SoundHelper, level) ->
+  'cs!HealthBar'
+  'json!/data/level01.json'], ($, boxbox, GroundEntity, PlayableCharacter, DoorEntity, PlateEntity, BoxEntity, PlatformEntity, GoalEntity, WallEntity, SoundHelper, HealthBar, level) ->
 
   class Loader
 
@@ -21,6 +22,7 @@ define [
       $canvas = $ '#gamescape'
       @canvas = $canvas.get 0
       @sound = new SoundHelper $canvas
+      @health = new HealthBar $canvas
       @loadLevel level
       $('#gamescape').on 'nextLevel', (e) =>
         @nextLevel()

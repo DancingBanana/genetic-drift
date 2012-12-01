@@ -239,7 +239,9 @@ body {
 #health-bar {
   @include background(image-url('health-bar.png'));
   width: 28px;
-  height: 309px;
+  height: 286px;
+  overflow: hidden;
+  margin-bottom: 20px;
   background-repeat: no-repeat;
 }
 
