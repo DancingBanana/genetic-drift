@@ -4,6 +4,10 @@
     "scale": 32,
     "tickFrequency": 100
   },
+  "WallEntity": [
+    { "x": 1.17, "y": 10 },
+    { "x": 30.83, "y": 10}
+  ],
   "GroundEntity": [
     { "width": 0, "x": 0, "y": 0 }
   ],
@@ -22,9 +26,9 @@
     { "name": "door1", "x": 12, "y": 12.3, "height": 3.3 }
   ],
   "PlateEntity": [
-    { "x": 15, "y": 13.8, "$target": "none" }
+    { "width": 3, "x": 10, "y": 13.12, "$target": "door1" }
   ],
   "GoalEntity": {
-    "x": 20, "y": 20
+    "x": 12, "y": 10
   }
 }
