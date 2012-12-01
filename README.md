@@ -1,4 +1,4 @@
-### Genetic Drift ###
+# Genetic Drift #
 
 A submission to Github's 2012 Game Off competition. Genetic Drift introduces
 Victor, an annoyed janitor dealing with a lot of annoyed clones and the
