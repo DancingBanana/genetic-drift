@@ -128,6 +128,7 @@ define ['cs!models/DynamicEntity', 'image!/img/character.png'], (DynamicEntity, 
             @setAction (if @speedY is 0 then (if @speed isnt 0 then 'runLeft' else 'standLeft') else 'jumpLeft')
 
         onTickAttackRight: =>
+            @canvas.trigger 'attack.sound'
             x = @frameAdvanceAttack 'attackRight'
             y = @actionMap.attackRight.row
             @entity.sprite x, y
@@ -136,11 +137,13 @@ define ['cs!models/DynamicEntity', 'image!/img/character.png'], (DynamicEntity, 
                 @setAction @previousAction
                 @attackFrame = 0
                 @unlockCharacter()
+                @canvas.trigger 'attack.soundOff'
                 return
             @lockCharacter()
             target[0].$wrapper?.setAction 'disintegrate'
 
         onTickAttackLeft: =>
+            @canvas.trigger 'attack.sound'
             x = @frameAdvanceAttack 'attackLeft'
             y = @actionMap.attackLeft.row
             @entity.sprite x, y
@@ -149,6 +152,7 @@ define ['cs!models/DynamicEntity', 'image!/img/character.png'], (DynamicEntity, 
                 @setAction @previousAction
                 @attackFrame = 0
                 @unlockCharacter()
+                @canvas.trigger 'attack.soundOff'
                 return
             @lockCharacter()
             target[0].$wrapper.setAction 'disintegrate'

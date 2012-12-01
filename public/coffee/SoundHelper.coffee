@@ -7,14 +7,24 @@ define ['json!/data/sound.json'], (soundData) ->
 
         playSound: (e) =>
             name = e.type
-            $("##{name}Sound")[0].play()
+            el = $("##{name}Sound")[0]
+            console.log el.paused
+            el.play() unless !el.paused
+
+        stopSound: (e) =>
+            name = e.type
+            el = $("##{name}Sound")[0]
+            console.log el.paused
+            el.pause() unless el.paused
 
         registerSound: (sound) =>
             soundPath = "/sound/#{sound.src}"
             id = "#{sound.name}Sound"
-            audioEl = $ "<audio src=\"#{soundPath}\" id=\"#{id}\">"
+            doLoop = (if sound.loop then 'loop' else '')
+            audioEl = $ "<audio src=\"#{soundPath}\" id=\"#{id}\" #{doLoop}>"
             audioEl.load()
             $('body').append audioEl
             @canvas.bind "#{sound.name}.sound", @playSound
+            @canvas.bind "#{sound.name}.soundOff", @stopSound
 
     return SoundHelper

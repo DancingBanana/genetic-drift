@@ -2,6 +2,8 @@ define ['cs!models/StaticEntity', 'image!/img/level-asset-door.png'], (StaticEnt
 
     class DoorEntity extends StaticEntity
 
+        isOpen: false
+
         template:
             type: 'static'
             name: 'door'
@@ -28,9 +30,13 @@ define ['cs!models/StaticEntity', 'image!/img/level-asset-door.png'], (StaticEnt
             @canvas.bind(eventNameBase + '.close', @onClose)
 
         onOpen: =>
+            @canvas.trigger 'door.sound' unless @isOpen
+            @isOpen = true
             @entity.position {x:9999, y:9999}
 
         onClose: =>
+            @canvas.trigger 'door.sound' unless not @isOpen
             @entity.position @originalPosition
+            @isOpen = false
 
     return DoorEntity
