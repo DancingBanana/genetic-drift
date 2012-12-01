@@ -8,13 +8,11 @@ define ['json!/data/sound.json'], (soundData) ->
         playSound: (e) =>
             name = e.type
             el = $("##{name}Sound")[0]
-            console.log el.paused
             el.play() unless !el.paused
 
         stopSound: (e) =>
             name = e.type
             el = $("##{name}Sound")[0]
-            console.log el.paused
             el.pause() unless el.paused
 
         registerSound: (sound) =>
