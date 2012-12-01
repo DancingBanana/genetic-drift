@@ -3,6 +3,7 @@ define ['cs!models/Character', 'cs!models/CloneCharacter'], (Character, CloneCha
     class PlayableCharacter extends Character
 
         planted: false
+        health: 5
 
         constructor: (@world, @overrides = {}) ->
             @overrides.name = 'player'
@@ -39,6 +40,7 @@ define ['cs!models/Character', 'cs!models/CloneCharacter'], (Character, CloneCha
             # Clone Action
             if e.keyCode is 67
                 if @actionLock then return
+                return unless @health > 1
                 @setAction 'clone'
                 @canvas.trigger 'clone.sound'
                 return false

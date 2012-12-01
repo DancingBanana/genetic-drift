@@ -139,6 +139,7 @@ define ['cs!models/DynamicEntity', 'image!/img/character.png'], (DynamicEntity, 
                 @unlockCharacter()
                 @canvas.trigger 'attack.soundOff'
                 return
+            if @health? and not @actionLock then @health = @health + target.length
             @lockCharacter()
             target[0].$wrapper?.setAction 'disintegrate'
 
@@ -154,6 +155,7 @@ define ['cs!models/DynamicEntity', 'image!/img/character.png'], (DynamicEntity, 
                 @unlockCharacter()
                 @canvas.trigger 'attack.soundOff'
                 return
+            if @health? and not @actionLock then @health = @health + target.length
             @lockCharacter()
             target[0].$wrapper.setAction 'disintegrate'
 
@@ -177,6 +179,8 @@ define ['cs!models/DynamicEntity', 'image!/img/character.png'], (DynamicEntity, 
             if @frame > 10
                 @createClone()
                 @unlockCharacter()
+                if @health? then @health = @health - 1
+                console.log @health
                 @setAction @previousAction
 
         onImpact: =>
