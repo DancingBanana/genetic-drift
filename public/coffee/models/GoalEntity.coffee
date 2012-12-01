@@ -20,7 +20,7 @@ define ['cs!models/StaticEntity', 'image!/img/level-asset-goal.png'], (StaticEnt
             x2 = pos.x + offsetX
             y2 = pos.y + offsetY - .2
             targets = @world.find x1, y1, x2, y2
-            return unless targets.length > 1
+            return unless targets.length > 0
 
             # If one of the entities at the goal is the player,
             # trigger the level change event on the canvas
