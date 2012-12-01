@@ -160,13 +160,13 @@ body {
   display: block;
   background-color: #fafafa;
   margin: 0 auto;
-  background: url('/img/level-asset-background-01.png?1354373823');
+  background: url('/img/level-asset-background-01.png?1354380842');
 }
 /* line 150, ../sass/global.scss */
 #gamescape.level2 {
-  background: url('/img/level-asset-background-02-dev.png?1354376843');
+  background: url('/img/level-asset-background-02.png?1354380842');
 }
 /* line 154, ../sass/global.scss */
 #gamescape.level3 {
-  background: url('/img/level-asset-background-03.png?1354377050');
+  background: url('/img/level-asset-background-03.png?1354380842');
 }
