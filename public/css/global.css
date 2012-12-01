@@ -1,16 +1,20 @@
+/* line 6, ../sass/global.scss */
 .stage .banner .controls:before, .stage .banner .controls:after {
   content: " ";
   display: table;
 }
+/* line 10, ../sass/global.scss */
 .stage .banner .controls:after {
   clear: both;
 }
 
+/* line 14, ../sass/global.scss */
 .stage .banner .controls {
   list-style: none;
   padding: 0;
   margin: 0;
 }
+/* line 19, ../sass/global.scss */
 .stage .banner .controls > li {
   float: left;
 }
@@ -23,22 +27,26 @@
   font-style: normal;
 }
 
+/* line 35, ../sass/global.scss */
 body {
-  background: url('../img/main-background.jpg?1354256838') 10% 70% repeat;
+  background: url('/img/main-background.jpg?1354256838') 10% 70% repeat;
   font-family: dosissemibold, sans-serif;
 }
 
+/* line 41, ../sass/global.scss */
 .stage header {
-  background: url('../img/main-header.png?1354256838') 0 0 no-repeat;
+  background: url('/img/main-header.png?1354256838') 0 0 no-repeat;
   width: 1205px;
   height: 82px;
   margin: 20px auto;
 }
+/* line 47, ../sass/global.scss */
 .stage > .inner {
   position: relative;
   width: 1226px;
   margin: 0 auto;
 }
+/* line 52, ../sass/global.scss */
 .stage .intro-container {
   background: transparent url("/public/img/intro-screen-01.jpg") center center no-repeat;
   width: 1024px;
@@ -48,28 +56,32 @@ body {
   left: 101px;
   z-index: 100;
 }
+/* line 61, ../sass/global.scss */
 .stage .next-intro-btn {
   cursor: pointer;
   position: absolute;
   top: 340px;
   left: 670px;
   z-index: 200;
-  background: url('../img/next_button.png?1354321165') 0 0 no-repeat;
+  background: url('/img/next_button.png?1354349989') 0 0 no-repeat;
   width: 49px;
   height: 49px;
 }
+/* line 70, ../sass/global.scss */
 .stage .next-intro-btn:hover {
-  background: url('../img/next_button_hover.png?1354321394') 0 0 no-repeat;
+  background: url('/img/next_button_hover.png?1354349989') 0 0 no-repeat;
 }
+/* line 74, ../sass/global.scss */
 .stage .bricks {
   z-index: 5;
   position: absolute;
   top: 0;
-  background: url('../img/brick-border-background.jpg?1354256838') 0 0 repeat-y;
+  background: url('/img/brick-border-background.jpg?1354327843') 0 0 repeat-y;
   width: 75px;
   height: 640px;
   border-color: #797052;
 }
+/* line 82, ../sass/global.scss */
 .stage .bricks.left {
   left: 102px;
   border-right-width: 2px;
@@ -78,6 +90,7 @@ body {
   -moz-box-shadow: -5px 0 10px #3e3e3e;
   box-shadow: -5px 0 10px #3e3e3e;
 }
+/* line 88, ../sass/global.scss */
 .stage .bricks.right {
   right: 102px;
   border-left-width: 2px;
@@ -86,43 +99,53 @@ body {
   -moz-box-shadow: 5px 0 10px #3e3e3e;
   box-shadow: 5px 0 10px #3e3e3e;
 }
+/* line 95, ../sass/global.scss */
 .stage .banner {
   z-index: 10;
   position: relative;
-  background: url('../img/banner-background.jpg?1354256838') 0 0 no-repeat, url('../img/banner-corner.png?1354256838') left bottom no-repeat, url('../img/banner-corner.png?1354256838') right bottom no-repeat;
+  background: url('/img/banner-background.jpg?1354256838') 0 0 no-repeat, url('/img/banner-corner.png?1354256838') left bottom no-repeat, url('/img/banner-corner.png?1354256838') right bottom no-repeat;
   width: 1226px;
   height: 140px;
 }
+/* line 104, ../sass/global.scss */
 .stage .banner .btn {
   position: absolute;
   top: 20px;
   cursor: pointer;
 }
+/* line 108, ../sass/global.scss */
 .stage .banner .btn:hover {
   top: 21px;
 }
+/* line 111, ../sass/global.scss */
 .stage .banner .btn.info {
   left: 60px;
 }
+/* line 114, ../sass/global.scss */
 .stage .banner .btn.credits {
   right: 60px;
 }
+/* line 118, ../sass/global.scss */
 .stage .banner .controls {
   width: 375px;
   margin: 0 auto;
 }
+/* line 122, ../sass/global.scss */
 .stage .banner .controls > li {
   padding-top: 20px;
   margin-left: 10px;
 }
+/* line 125, ../sass/global.scss */
 .stage .banner .controls > li:first-child {
   margin-left: 0;
 }
+/* line 128, ../sass/global.scss */
 .stage .banner .controls > li img {
   -webkit-box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.25);
   -moz-box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.25);
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.25);
 }
+/* line 131, ../sass/global.scss */
 .stage .banner .controls > li .description {
   display: block;
   text-align: center;
@@ -132,9 +155,10 @@ body {
   text-shadow: 0 2px 5px #454545;
 }
 
+/* line 144, ../sass/global.scss */
 #gamescape {
   display: block;
   background-color: #fafafa;
   margin: 0 auto;
-  background: url('../img/level-asset-background-01-dev.png?1354256838');
+  background: url('/img/level-asset-background-01.png?1354373823');
 }

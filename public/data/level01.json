@@ -1,6 +1,5 @@
 {
   "World": {
-    "collisionOutlines": true,
     "scale": 32,
     "tickFrequency": 100
   },
@@ -46,6 +45,6 @@
     { "x": 18.2, "y": 6.9, "$target": "door2" }
   ],
   "GoalEntity": {
-    "x": 12, "y": 20
+    "x": 7, "y": 2
   }
 }
