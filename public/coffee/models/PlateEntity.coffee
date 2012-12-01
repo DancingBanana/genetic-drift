@@ -2,6 +2,8 @@ define ['cs!models/StaticEntity', 'image!/img/level-asset-pressure-plate.png'], 
 
     class PlateEntity extends StaticEntity
 
+        active: false
+
         template:
             active: false
             height: .4
@@ -15,9 +17,13 @@ define ['cs!models/StaticEntity', 'image!/img/level-asset-pressure-plate.png'], 
 
         onTick: =>
             if @isActivated()
+                @active = true
                 @canvas.trigger @entity.$target + '.open'
                 @entity.sprite 1, 0
             else
+                if @active
+                    @canvas.trigger @entity.$target + '.disengage'
+                    @active = false
                 @canvas.trigger @entity.$target + '.close'
                 @entity.sprite 0, 0
 
@@ -26,7 +32,7 @@ define ['cs!models/StaticEntity', 'image!/img/level-asset-pressure-plate.png'], 
             width = @entity._ops.width
             height = @entity._ops.height
             x1 = pos.x - width / 2
-            y2 = pos.y - height / 2 - .1
+            y2 = pos.y - height / 2
             x2 = pos.x + width / 2
             y1 = y2 - height
             return @world.find(x1, y1, x2, y2).length
