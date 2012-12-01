@@ -15,6 +15,8 @@ define [
 
     constructor: ->
       @loadLevel Level
+      $('#gamescape').on 'requestLevel', (e) =>
+        @loadLevel @currentLevelRequest
       # @currentLevel = 1
 
     loadLevel: (levelRequested) =>
@@ -49,14 +51,9 @@ define [
         @currentLevel = @currentLevel + 1
 
     nextLevel: (levelRequested) =>
-      # return if levelRequested is @currentLevel
-      # console.log levelRequested
       if levelRequested < 4 or levelRequested > 0
         require ['jquery',"json!/data/level0#{levelRequested}.json"], ($, newLevel) =>
-          # $('#gamescape').on 'requestLevel', (e) =>
-          @loadLevel newLevel
-      # else
-      #   console.log "whoops #{levelRequested} is too high a number"
+          @currentLevelRequest = newLevel
       return
 
   return Loader
