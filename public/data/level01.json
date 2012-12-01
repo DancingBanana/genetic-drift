@@ -4,6 +4,10 @@
     "scale": 32,
     "tickFrequency": 100
   },
+  "WallEntity": [
+    { "x": 1.17, "y": 10 },
+    { "x": 30.83, "y": 10}
+  ],
   "GroundEntity": [
     { "width": 30, "x": 16, "y": 20.3 },
     { "width": 16.25, "x": 10.3, "y": 14.3 },

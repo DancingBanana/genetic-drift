@@ -8,8 +8,9 @@ define [
   'cs!models/BoxEntity'
   'cs!models/PlatformEntity'
   'cs!models/GoalEntity'
+  'cs!models/WallEntity'
   'cs!SoundHelper'
-  'json!/data/level01.json'], ($, boxbox, GroundEntity, PlayableCharacter, DoorEntity, PlateEntity, BoxEntity, PlatformEntity, GoalEntity, SoundHelper, Level) ->
+  'json!/data/level01.json'], ($, boxbox, GroundEntity, PlayableCharacter, DoorEntity, PlateEntity, BoxEntity, PlatformEntity, GoalEntity, WallEntity, SoundHelper, Level) ->
 
   class Loader
 
@@ -42,6 +43,9 @@ define [
         do player.destroy
 
       world = boxbox.createWorld @canvas, levelRequested.World
+
+      # Edge walls
+      walls = (new WallEntity world, options).register() for options in levelRequested.WallEntity
 
       grounds = (new GroundEntity world, options).register() for options in levelRequested.GroundEntity
 
