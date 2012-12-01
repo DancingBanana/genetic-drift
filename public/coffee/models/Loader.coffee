@@ -44,6 +44,9 @@ define [
       if levelRequested.PlatformEntity?
           @deletables.push ((new PlatformEntity @world, options).register() for options in levelRequested.PlatformEntity)...
 
+      # Delete clones from last level
+      if @world.$cloneList? then do clone.destroy for clone in @world.$cloneList
+
       goal = new GoalEntity @world, levelRequested.GoalEntity
       @deletables.push goal.register()
 
