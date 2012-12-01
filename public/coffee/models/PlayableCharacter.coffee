@@ -40,6 +40,7 @@ define ['cs!models/Character', 'cs!models/CloneCharacter'], (Character, CloneCha
             if e.keyCode is 67
                 if @actionLock then return
                 @setAction 'clone'
+                @canvas.trigger 'clone.sound'
                 return false
 
             # Attack

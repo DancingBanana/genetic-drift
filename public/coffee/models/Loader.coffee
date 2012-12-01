@@ -8,7 +8,8 @@ define [
   'cs!models/BoxEntity'
   'cs!models/PlatformEntity'
   'cs!models/GoalEntity'
-  'json!/data/level01.json'], ($, boxbox, GroundEntity, PlayableCharacter, DoorEntity, PlateEntity, BoxEntity, PlatformEntity, GoalEntity, Level) ->
+  'cs!SoundHelper'
+  'json!/data/level01.json'], ($, boxbox, GroundEntity, PlayableCharacter, DoorEntity, PlateEntity, BoxEntity, PlatformEntity, GoalEntity, SoundHelper, Level) ->
 
   class Loader
 
@@ -18,10 +19,9 @@ define [
 
     loadLevel: (levelRequested) =>
 
-      $canvas = $ '#gamescape'
-      canvas = $canvas.get 0
+      @sound = new SoundHelper $canvas
 
-      world = boxbox.createWorld canvas, levelRequested.World
+      world = boxbox.createWorld @canvas, levelRequested.World
 
       if @currentLevel > 1
         do grounds.destroy for ground in grounds
