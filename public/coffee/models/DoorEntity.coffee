@@ -28,6 +28,7 @@ define ['cs!models/StaticEntity', 'image!/img/level-asset-door.png'], (StaticEnt
             eventNameBase = @entity._name
             @canvas.bind(eventNameBase + '.open', @onOpen)
             @canvas.bind(eventNameBase + '.close', @onClose)
+            @
 
         onOpen: =>
             @canvas.trigger 'door.sound' unless @isOpen
