@@ -6,7 +6,4 @@ define [
     'cs!models/Loader'], ($, boxbox, GroundEntity, PlayableCharacter, Loader) ->
 
     game = new Loader
-    # game.loadLevel 2
-    game.nextLevel 2
-    game.nextLevel 3
 
