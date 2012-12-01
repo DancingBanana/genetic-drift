@@ -58,17 +58,72 @@ body {
     left: 101px;
     z-index: 100;
   }
+  .credits-container {
+    display: none;
+    background: transparent url("/public/img/credits-screen.jpg") center center no-repeat;
+    width: 1024px;
+    height: 640px;
+    position: absolute;
+    top: 0;
+    left: 101px;
+    z-index: 100;
+    &.is-active {
+      display: block;
+    }
+    .btn {
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: image-width("twitter-btn.png");
+      height: image-height("twitter-btn.png");
+      &.dan {
+        top: 218px;
+      }
+      &.magnus {
+        top: 366px;
+      }
+      &.roger {
+        top: 291px;
+      }
+      &.noah {
+        top: 437px;
+      }
+    }
+    .twitter {
+      @include background(image-url("twitter-btn.png") 0 0 no-repeat);
+      right: 340px;
+    }
+    .linkedin {
+      @include background(image-url("linkedin-btn.png") 0 0 no-repeat);
+      right: 305px;
+    }
+    .github {
+      @include background(image-url("github-btn.png") 0 0 no-repeat);
+      right: 305px;
+    }
+  }
   .next-intro-btn {
     cursor: pointer;
     position: absolute;
     top: 340px;
-    left: 670px;
+    left: 670px - 90;
     z-index: 200;
     @include background(image-url("next_button.png") 0 0 no-repeat);
     width: image-width("next_button.png");
     height: image-height("next_button.png");
     &:hover {
       @include background(image-url("next_button_hover.png") 0 0 no-repeat);
+    }
+    &.play-now {
+      @include background(image-url("play_btn.png") 0 0 no-repeat);
+      width: image-width("play_btn.png");
+      height: image-height("play_btn.png");
+      top: 310px;
+      left: 690px;
+      &:hover {
+        @include background(image-url("play_btn_hover.png") 0 0 no-repeat);
+      }
     }
   }
   .bricks {
