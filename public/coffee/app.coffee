@@ -1,9 +1,7 @@
 define [
     'jquery'
     'boxbox'
-    'cs!models/GroundEntity'
-    'cs!models/PlayableCharacter',
-    'cs!models/Loader'], ($, boxbox, GroundEntity, PlayableCharacter, Loader) ->
+    'cs!models/Loader'], ($, boxbox, Loader) ->
 
     game = new Loader
 
