@@ -9,26 +9,52 @@
     { "x": 30.83, "y": 10}
   ],
   "GroundEntity": [
-    { "width": 0, "x": 0, "y": 0 }
+    { "width": 8, "x": 4, "y": 5 },
+    { "width": 30, "x": 16, "y": 20.3 },
+    { "width": 4, "$orientation": "horizontal", "x": 10.9, "y": 0.5 },
+    { "width": 4, "$orientation": "horizontal", "x": 14.9, "y": 0.5 },
+    { "width": 4, "$orientation": "horizontal", "x": 18.9, "y": 0.5 },
+    { "width": 10, "x": 26.5, "y": 5 }
   ],
   "PlatformEntity": [
-    { "x": 0, "y": 0 }
+    { "x": 11.3, "y": 7.8 },
+    { "x": 23.3, "y": 8.2 },
+    { "x": 18, "y": 9.6 },
+    { "x": 6.5, "y": 10.05 },
+    { "x": 10.5, "y": 12.3 },
+    { "x": 12, "y": 15.7 },
+    { "x": 24, "y": 12.3 },
+    { "x": 5.5, "y": 17.9 },
+    { "x": 16.3, "y": 17.9 },
+    { "x": 23, "y": 17.9 },
+    { "x": 19.2, "y": 14.55 }
   ],
   "BoxEntity": [
-    { "x": 9, "y": 20 }
+    { "x": 12.1, "y": 1.3 },
+    { "x": 13.7, "y": 1.3 },
+    { "x": 16.1, "y": 1.3 },
+    { "x": 17.7, "y": 1.3 }
   ],
   "PlayableCharacter": {
     "x": 5.5,
-    "y": 18.5,
+    "y": 3.5,
     "maxVelocityX": 4
   },
   "DoorEntity": [
-    { "name": "door1", "x": 12, "y": 12.3, "height": 3.3 }
+    { "name": "door1", "$orientation": "horizontal", "x": 12.9, "height": 3.3,
+    "y": 2.4 },
+    { "name": "door2", "$orientation": "horizontal", "x": 16.9, "height": 3.3,
+    "y": 2.4 },
+    { "name": "door3", "height": 5, "x": 21.6, "y": 2.3 }
   ],
   "PlateEntity": [
-    { "width": 3, "x": 10, "y": 13.12, "$target": "door1" }
+    { "width": 2, "x": 5.5, "y": 17.6, "$target": "door1" },
+    { "width": 2, "x": 23, "y": 17.6, "$target": "door2" },
+    { "width": 2, "x": 16.5, "y": 17.6, "$target": "door2" },
+    { "width": 2, "x": 16.5, "y": 19.8, "$target": "door1" },
+    { "width": 2, "x": 22, "y": 19.8, "$target": "door3" }
   ],
   "GoalEntity": {
-    "x": 12, "y": 10
+    "x": 26, "y": 3.1
   }
 }
