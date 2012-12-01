@@ -4,6 +4,10 @@ define ['cs!models/Character', 'cs!models/CloneCharacter'], (Character, CloneCha
 
         planted: false
 
+        constructor: (@world, @overrides = {}) ->
+            @overrides.name = 'player'
+            super @world, @overrides
+
         onKeydown: (e) =>
 
             @speed = @entity._body.m_linearVelocity.x
