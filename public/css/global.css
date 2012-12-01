@@ -1,16 +1,20 @@
+/* line 6, ../sass/global.scss */
 .stage .banner .controls:before, .stage .banner .controls:after {
   content: " ";
   display: table;
 }
+/* line 10, ../sass/global.scss */
 .stage .banner .controls:after {
   clear: both;
 }
 
+/* line 14, ../sass/global.scss */
 .stage .banner .controls {
   list-style: none;
   padding: 0;
   margin: 0;
 }
+/* line 19, ../sass/global.scss */
 .stage .banner .controls > li {
   float: left;
 }
@@ -23,22 +27,26 @@
   font-style: normal;
 }
 
+/* line 35, ../sass/global.scss */
 body {
-  background: url('../img/main-background.jpg?1354256838') 10% 70% repeat;
+  background: url('/img/main-background.jpg?1354256838') 10% 70% repeat;
   font-family: dosissemibold, sans-serif;
 }
 
+/* line 41, ../sass/global.scss */
 .stage header {
-  background: url('../img/main-header.png?1354256838') 0 0 no-repeat;
+  background: url('/img/main-header.png?1354256838') 0 0 no-repeat;
   width: 1205px;
   height: 82px;
   margin: 20px auto;
 }
+/* line 47, ../sass/global.scss */
 .stage > .inner {
   position: relative;
   width: 1226px;
   margin: 0 auto;
 }
+/* line 52, ../sass/global.scss */
 .stage .intro-container {
   background: transparent url("/public/img/intro-screen-01.jpg") center center no-repeat;
   width: 1024px;
@@ -48,6 +56,7 @@ body {
   left: 101px;
   z-index: 100;
 }
+/* line 61, ../sass/global.scss */
 .stage .game-over-container {
   display: none;
   cursor: pointer;
@@ -59,9 +68,11 @@ body {
   left: 101px;
   z-index: 100;
 }
+/* line 71, ../sass/global.scss */
 .stage .game-over-container.is-active {
   display: block;
 }
+/* line 75, ../sass/global.scss */
 .stage .credits-container {
   display: none;
   background: transparent url("/public/img/credits-screen.jpg") center center no-repeat;
@@ -72,9 +83,11 @@ body {
   left: 101px;
   z-index: 100;
 }
+/* line 84, ../sass/global.scss */
 .stage .credits-container.is-active {
   display: block;
 }
+/* line 87, ../sass/global.scss */
 .stage .credits-container .btn {
   display: block;
   position: absolute;
@@ -83,62 +96,76 @@ body {
   width: 29px;
   height: 29px;
 }
+/* line 94, ../sass/global.scss */
 .stage .credits-container .btn.dan {
   top: 218px;
 }
+/* line 97, ../sass/global.scss */
 .stage .credits-container .btn.magnus {
   top: 366px;
 }
+/* line 100, ../sass/global.scss */
 .stage .credits-container .btn.roger {
   top: 291px;
 }
+/* line 103, ../sass/global.scss */
 .stage .credits-container .btn.noah {
   top: 437px;
 }
+/* line 107, ../sass/global.scss */
 .stage .credits-container .twitter {
-  background: url('../img/twitter-btn.png?1354383699') 0 0 no-repeat;
+  background: url('/img/twitter-btn.png?1354388477') 0 0 no-repeat;
   right: 340px;
 }
+/* line 111, ../sass/global.scss */
 .stage .credits-container .linkedin {
-  background: url('../img/linkedin-btn.png?1354383716') 0 0 no-repeat;
+  background: url('/img/linkedin-btn.png?1354388477') 0 0 no-repeat;
   right: 305px;
 }
+/* line 115, ../sass/global.scss */
 .stage .credits-container .github {
-  background: url('../img/github-btn.png?1354383729') 0 0 no-repeat;
+  background: url('/img/github-btn.png?1354388477') 0 0 no-repeat;
   right: 305px;
 }
+/* line 120, ../sass/global.scss */
 .stage .next-intro-btn {
   cursor: pointer;
   position: absolute;
   top: 340px;
   left: 580px;
   z-index: 200;
-  background: url('../img/next_button.png?1354327843') 0 0 no-repeat;
+  background: url('/img/next_button.png?1354388477') 0 0 no-repeat;
   width: 49px;
   height: 49px;
 }
+/* line 129, ../sass/global.scss */
 .stage .next-intro-btn:hover {
-  background: url('../img/next_button_hover.png?1354327843') 0 0 no-repeat;
+  background: url('/img/next_button_hover.png?1354388477') 0 0 no-repeat;
 }
+/* line 132, ../sass/global.scss */
 .stage .next-intro-btn.play-now {
-  background: url('../img/play_btn.png?1354327843') 0 0 no-repeat;
+  background: url('/img/play_btn.png?1354388477') 0 0 no-repeat;
   width: 183px;
   height: 53px;
   top: 310px;
   left: 690px;
 }
+/* line 138, ../sass/global.scss */
 .stage .next-intro-btn.play-now:hover {
-  background: url('../img/play_btn_hover.png?1354327843') 0 0 no-repeat;
+  background: url('/img/play_btn_hover.png?1354388477') 0 0 no-repeat;
 }
+/* line 143, ../sass/global.scss */
 .stage .bricks {
   z-index: 5;
   position: absolute;
   top: 0;
-  background: url('../img/brick-border-background.jpg?1354327843') 0 0 repeat-y;
+  padding: 20px 0px;
+  background: url('/img/brick-border-background.jpg?1354388477') 0 0 repeat-y;
   width: 75px;
   height: 640px;
   border-color: #797052;
 }
+/* line 152, ../sass/global.scss */
 .stage .bricks.left {
   left: 102px;
   border-right-width: 2px;
@@ -147,6 +174,7 @@ body {
   -moz-box-shadow: -5px 0 10px #3e3e3e;
   box-shadow: -5px 0 10px #3e3e3e;
 }
+/* line 158, ../sass/global.scss */
 .stage .bricks.right {
   right: 102px;
   border-left-width: 2px;
@@ -155,43 +183,53 @@ body {
   -moz-box-shadow: 5px 0 10px #3e3e3e;
   box-shadow: 5px 0 10px #3e3e3e;
 }
+/* line 165, ../sass/global.scss */
 .stage .banner {
   z-index: 10;
   position: relative;
-  background: url('../img/banner-background.jpg?1354256838') 0 0 no-repeat, url('../img/banner-corner.png?1354256838') left bottom no-repeat, url('../img/banner-corner.png?1354256838') right bottom no-repeat;
+  background: url('/img/banner-background.jpg?1354256838') 0 0 no-repeat, url('/img/banner-corner.png?1354256838') left bottom no-repeat, url('/img/banner-corner.png?1354256838') right bottom no-repeat;
   width: 1226px;
   height: 140px;
 }
+/* line 174, ../sass/global.scss */
 .stage .banner .btn {
   position: absolute;
   top: 20px;
   cursor: pointer;
 }
+/* line 178, ../sass/global.scss */
 .stage .banner .btn:hover {
   top: 21px;
 }
+/* line 181, ../sass/global.scss */
 .stage .banner .btn.info {
   left: 60px;
 }
+/* line 184, ../sass/global.scss */
 .stage .banner .btn.credits {
   right: 60px;
 }
+/* line 188, ../sass/global.scss */
 .stage .banner .controls {
   width: 375px;
   margin: 0 auto;
 }
+/* line 192, ../sass/global.scss */
 .stage .banner .controls > li {
   padding-top: 20px;
   margin-left: 10px;
 }
+/* line 195, ../sass/global.scss */
 .stage .banner .controls > li:first-child {
   margin-left: 0;
 }
+/* line 198, ../sass/global.scss */
 .stage .banner .controls > li img {
   -webkit-box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.25);
   -moz-box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.25);
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.25);
 }
+/* line 201, ../sass/global.scss */
 .stage .banner .controls > li .description {
   display: block;
   text-align: center;
@@ -201,15 +239,46 @@ body {
   text-shadow: 0 2px 5px #454545;
 }
 
+/* line 214, ../sass/global.scss */
 #gamescape {
   display: block;
   background-color: #fafafa;
   margin: 0 auto;
-  background: url('../img/level-asset-background-01.png?1354380842');
+  background: url('/img/level-asset-background-01.png?1354388477');
 }
+/* line 220, ../sass/global.scss */
 #gamescape.level2 {
-  background: url('../img/level-asset-background-02.png?1354380842');
+  background: url('/img/level-asset-background-02.png?1354388477');
 }
+/* line 224, ../sass/global.scss */
 #gamescape.level3 {
-  background: url('../img/level-asset-background-03.png?1354380842');
+  background: url('/img/level-asset-background-03.png?1354388477');
+}
+
+/* line 229, ../sass/global.scss */
+.health-container {
+  width: 59px;
+  height: 373px;
+  margin: 0px 0px 0px 10px;
+  padding: 20px 0px 0px 14px;
+  display: block;
+  background: url('/img/health-bar-bg.png?1354373169');
+  background-repeat: no-repeat;
+}
+
+/* line 239, ../sass/global.scss */
+#health-bar {
+  background: url('/img/health-bar.png?1354373223');
+  width: 28px;
+  height: 309px;
+  background-repeat: no-repeat;
+}
+
+/* line 246, ../sass/global.scss */
+.heart {
+  background: url('/img/health-bar-heart.png?1354373267');
+  width: 22px;
+  height: 20px;
+  background-repeat: no-repeat;
+  margin-left: 3px;
 }

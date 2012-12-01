@@ -144,6 +144,7 @@ body {
     z-index: 5;
     position: absolute;
     top: 0;
+    padding: 20px 0px;
     @include background(image-url("brick-border-background.jpg") 0 0 repeat-y);
     width: 75px;
     height: 640px;
@@ -223,4 +224,29 @@ body {
   &.level3 {
       @include background(image-url('level-asset-background-03.png'));
   }
+}
+
+.health-container {
+  width: 59px;
+  height: 373px;
+  margin: 0px 0px 0px 10px;
+  padding: 20px 0px 0px 14px;
+  display: block;
+  @include background(image-url('health-bar-bg.png'));
+  background-repeat: no-repeat;
+}
+
+#health-bar {
+  @include background(image-url('health-bar.png'));
+  width: 28px;
+  height: 309px;
+  background-repeat: no-repeat;
+}
+
+.heart {
+  @include background(image-url('health-bar-heart.png'));
+  width: 22px;
+  height: 20px;
+  background-repeat: no-repeat;
+  margin-left: 3px;
 }
