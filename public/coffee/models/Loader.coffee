@@ -31,6 +31,10 @@ define [
       if @deletables?.length then deletable.destroy() for deletable in @deletables
       if not @world? then @world = boxbox.createWorld @canvas, levelRequested.World
 
+      # Set background image
+      do $(@canvas).removeClass
+      $(@canvas).addClass "level#{@currentLevel}"
+
       if levelRequested.WallEntity?
           @deletables = ((new WallEntity @world, options).register() for options in levelRequested.WallEntity)
       if levelRequested.GroundEntity?

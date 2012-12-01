@@ -146,4 +146,12 @@ body {
   background-color: #fafafa;
   margin: 0 auto;
   @include background(image-url('level-asset-background-01.png'));
+
+  &.level2 {
+      @include background(image-url('level-asset-background-02-dev.png'));
+  }
+
+  &.level3 {
+      @include background(image-url('level-asset-background-03.png'));
+  }
 }
